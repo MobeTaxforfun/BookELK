@@ -153,13 +153,12 @@ docker.elastic.co/kibana/kibana                 7.17.4    86967a98433b   4 weeks
         nginx
         ```
 
+    2. 訪問 `http://localhost:7414/` Welcome to nginx!  
+        ![NGINX_host](./../.vuepress/public/NGINXhost.png)
+
 6. 小結
 
    全部啟動後檢查一下結果 Docker 中會有5個容器，以下的都用不到...; 接下編寫 Docker Compose 用於啟動一個簡單的 Elastic Stack ; 我們需要額外設定的東西主要有兩項:
-
-   * 將 Elastic Stack 中必要的資料持久化至硬碟(windows 環境下直接用 docker 指令做 bind mounts 真得太過陰間...)
-   * 將 Elastic Stack 需要使用的設定檔 Bind 到指定的實體位置，方便修改
-   * 添加一些更詳細的設定
 
    ```sh
    C:\Users\mobet>docker ps
@@ -170,3 +169,8 @@ docker.elastic.co/kibana/kibana                 7.17.4    86967a98433b   4 weeks
     90789d97e6bc   docker.elastic.co/logstash/logstash:7.17.4             "/usr/local/bin/dock…"   30 minutes ago   Up 30 minutes   0.0.0.0:5044->5044/tcp, 0.0.0.0:9600->9600/tcp   mylogstash
     ab772cb2f745   docker.elastic.co/elasticsearch/elasticsearch:7.17.4   "/bin/tini -- /usr/l…"   44 minutes ago   Up 44 minutes   0.0.0.0:9200->9200/tcp, 9300/tcp                 myelasticsearch
    ```
+
+   * 將 Elastic Stack 中必要的資料持久化至硬碟(windows 環境下直接用 docker 指令做 bind mounts 真得太過陰間...)
+   * 將 Elastic Stack 需要使用的設定檔 Bind 到指定的實體位置，方便修改
+   * 添加一些更詳細的設定
+   * 下章節用 Docker Compose 來建置環境

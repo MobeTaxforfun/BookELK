@@ -12,7 +12,7 @@ module.exports = {
                       collapsable: false,
                       children: [
                         ['/chapter1/one', 'Elastic stack 環境建置'],
-                        ['/chapter1/two', '第二小節(施工中)'],
+                        ['/chapter1/two', 'Elastic stack 環境建置(docker compose)'],
                       ]
                     },
                     {
