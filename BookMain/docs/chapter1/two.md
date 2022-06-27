@@ -9,7 +9,7 @@
 
 架構參考至原文傳送門 [The Elastic stack (ELK) powered by Docker and Compose.](https://github.com/deviantony/docker-elk)
 
-## Docker Compose 啟動文件
+## Docker Compose 檔案結構
 
 ```Text
 |
@@ -36,5 +36,11 @@
 ├── docker-compose.yml
 ├── LICENSE
 └── README.md
+
+```
+
+## Docker Compose 啟動文件
+
+```YAML
 
 ```
