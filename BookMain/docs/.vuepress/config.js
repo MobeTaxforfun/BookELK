@@ -22,15 +22,16 @@ module.exports = {
                       ['/chapter2/one', 'Elasticsearch 基本使用'],
                       ['/chapter2/two', '第二小節(施工中)'],
                     ]
-                  },
-                  {
-                    title: 'Elastic stack 理論篇(施工中)',
-                    collapsable: false,
-                    children: [
-                      ['/chapter3/one', '第一小節(施工中)'],
-                      ['/chapter3/two', '第二小節(施工中)'],
-                    ]
                   }
+                  ,
+                  // {
+                  //   title: 'Elastic stack 理論篇(施工中)',
+                  //   collapsable: false,
+                  //   children: [
+                  //     ['/chapter3/one', '第一小節(施工中)'],
+                  //     ['/chapter3/two', '第二小節(施工中)'],
+                  //   ]
+                  // }
                 ]
             }
         }
