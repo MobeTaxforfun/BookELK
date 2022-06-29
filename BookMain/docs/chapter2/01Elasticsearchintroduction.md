@@ -14,21 +14,3 @@
 * Document
 * Field
 * Mapping
-
-## 索引相關操作
-
-* 新增索引
-
-* 查詢索引
-
-* 刪除索引
-
-## Document 基本增刪改查
-
-* 新增 Document
-
-* 刪除 Document
-
-* 修改 Document
-
-* 查詢 Document
