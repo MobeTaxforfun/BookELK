@@ -1,4 +1,4 @@
-# Elasticsearch 基本介紹
+# Elasticsearch 基本
 
 主要放一些閱讀 Elasticsearch 會遇到的關鍵字
 :earth_asia: 環境

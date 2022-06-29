@@ -1,4 +1,4 @@
-# Elasticsearch index 基本操作
+# Elasticsearch Index
 
 簡單過一下索引的API，看教學的時候才不會慌張
 

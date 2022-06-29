@@ -19,8 +19,11 @@ module.exports = {
                     title: 'Elasticsearch 入門',
                     collapsable: false,
                     children: [
-                      ['/chapter2/01Elasticsearchintroduction', 'Elasticsearch 基本使用'],
-                      ['/chapter2/02ElasticsearchBasicIndex', '第二小節(施工中)'],
+                      ['/chapter2/01Elasticsearchintroduction', 'Elasticsearch 基本'],
+                      ['/chapter2/02ElasticsearchBasicIndex',   'Elasticsearch Index'],
+                      ['/chapter2/02ElasticsearchMapping',      'Elasticsearch Mapping'],
+                      ['/chapter2/02ElasticsearchAliases',      'Elasticsearch Alias'],
+                      ['/chapter2/03Elasticsearchcat',          'Elasticsearch cat']
                     ]
                   }
                   //,
