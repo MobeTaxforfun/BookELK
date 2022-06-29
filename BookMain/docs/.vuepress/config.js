@@ -23,7 +23,7 @@ module.exports = {
                       ['/chapter2/two', '第二小節(施工中)'],
                     ]
                   }
-                  ,
+                  //,
                   // {
                   //   title: 'Elastic stack 理論篇(施工中)',
                   //   collapsable: false,
