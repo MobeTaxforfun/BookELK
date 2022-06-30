@@ -11,8 +11,8 @@ module.exports = {
                     title: 'Elastic stack 實用篇',
                     collapsable: false,
                     children: [
-                      ['/chapter1/one', 'Elastic stack 環境建置'],
-                      ['/chapter1/two', 'Elastic stack 環境建置(docker compose)'],
+                      ['/chapter1/buildenvironmet', 'Elastic stack 環境建置'],
+                      ['/chapter1/buildenvwithdockercompose', 'Elastic stack 環境建置(docker compose)'],
                     ]
                   },
                   {

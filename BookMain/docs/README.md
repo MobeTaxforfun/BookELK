@@ -7,7 +7,7 @@
 
 ## Elastic Stack
 
-![elasticsearch_host](./../.vuepress/public/../../docs/.vuepress/public/elastic-logo.svg)
+![elasticsearch_host](./.vuepress/public/elastic-logo.svg)
 
 官方網站傳送門 ["https://www.elastic.co/"]("https://www.elastic.co/")
 

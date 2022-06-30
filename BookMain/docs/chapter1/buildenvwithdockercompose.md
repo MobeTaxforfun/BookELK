@@ -16,7 +16,7 @@ Reference
 
 ## 服務架構
 
-![elkdockercomposestructer](./../.vuepress/public/elkdockercomposestructer.jpg)
+![elkdockercomposestructer](./../.vuepress/public/chapter1/buildenvwithdockercompose/elkdockercomposestructer.jpg)
 
 ## Docker Compose 檔案結構
 

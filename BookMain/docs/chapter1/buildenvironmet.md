@@ -94,7 +94,7 @@ docker.elastic.co/kibana/kibana                 7.17.4    86967a98433b   4 weeks
         ```
 
     2. 啟動後至 `http://localhost:9200/` 察看結果，看到以下畫面就是啟動成功了"You Know, for Search"  
-        ![elasticsearch_host](./../.vuepress/public/elastichost.png)
+        ![elasticsearch_host](./../.vuepress/public/chapter1/buildenvironmet/elastichost.png)
 
 2. Kibana
     1. 以上面啟動的 Elasticsearch 為 Host 啟動 Kibana; 兩個要點注意--network是否橋接到同一個網路介面，`ELASTICSEARCH_HOSTS=http://myelasticsearch:9200` 以當下的創建的 elasticsearch 服務為準
@@ -109,7 +109,7 @@ docker.elastic.co/kibana/kibana                 7.17.4    86967a98433b   4 weeks
         ```
 
     2. 啟動後至 `http://localhost:5601/` 察看結果，若啟動成功會看到以下介面  
-        ![kibana_host](./../.vuepress/public/kibanahost.png)
+        ![kibana_host](./../.vuepress/public/chapter1/buildenvironmet/kibanahost.png)
 
 3. Logstash
     1. 啟動 Logstash 這邊會映射兩個 port 號，5044 這是 default beats port; 9600 是給 Web API 使用的
@@ -124,7 +124,7 @@ docker.elastic.co/kibana/kibana                 7.17.4    86967a98433b   4 weeks
         ```
 
     2. 啟動後至 `http://localhost:9600/_node/pipelines?pretty` 應該會看到一個預設的 pipelines  
-        ![logstash_host](./../.vuepress/public/logstashhost.png)
+        ![logstash_host](./../.vuepress/public/chapter1/buildenvironmet/logstashhost.png)
 
 4. Filebeat
     1. 啟動 Filebeat -strict.perms=false 不檢查配置文件 es.yml
@@ -140,7 +140,7 @@ docker.elastic.co/kibana/kibana                 7.17.4    86967a98433b   4 weeks
 
     2. 由於沒有映射 Port 到容器外面這邊可以使用 `docker logs [Container]` 查一下 Log 輸出
         啟動成功應該會在 Log 中看到以下字眼  
-        ![filebeat_logs](./../.vuepress/public/filebeatlogs.png)
+        ![filebeat_logs](./../.vuepress/public/chapter1/buildenvironmet/filebeatlogs.png)
 
 5. NGINX
     1. 毫無反應就是一個 NGINX 直接無情啟動
@@ -154,7 +154,7 @@ docker.elastic.co/kibana/kibana                 7.17.4    86967a98433b   4 weeks
         ```
 
     2. 訪問 `http://localhost:7414/` Welcome to nginx!  
-        ![NGINX_host](./../.vuepress/public/NGINXhost.png)
+        ![NGINX_host](./../.vuepress/public/chapter1/buildenvironmet/NGINXhost.png)
 
 6. 小結
 

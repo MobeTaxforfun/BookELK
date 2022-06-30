@@ -7,7 +7,7 @@
 在創建索引時;透過 "mappings" 來指定，Field data Type 可以看這邊 [官方文件](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)
 
 ```sh
-PUT /my-index-000001
+PUT /my-user-000001
 {
   "mappings": {
     "properties": {
