@@ -28,10 +28,26 @@ Thank you!
 * 環境
   - [X] 初階 Elasticsearch With Docker
   - [ ] 初階 Elasticsearch With DockerCompose
+* 日誌相關
+  - [X] Filebeat NGINX
+  - [ ] Filebeat IIS
+  - [ ] Heartbeat Redis
+  - [ ] Metricbeat
+  - [ ] Winlogbeat
 * Elasticsearch
   - [X] Mapping
   - [ ] Index Aliases
   - [ ] Analyzer
   - [ ] Search
+* Elasticsearch Demo I
+  - [ ] 申請故宮 Open data
+  - [ ] 抓取資料
+  - [ ] 將資料入庫
+  - [ ] 使用 Elasticsearch 進行持久化
+  - [ ] 特定欄位實踐全文搜索
+
+* Elasticsearch Demo II
+  - [ ] PTT 對答資料;資料來源 [很厲害的 NLP Github](https://github.com/zake7749)
+  - [ ] 分詞
 * 未來式
   - [ ] 理解 Elastic Common Schema
