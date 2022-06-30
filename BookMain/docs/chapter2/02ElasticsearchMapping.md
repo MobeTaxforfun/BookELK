@@ -3,6 +3,7 @@
 在 Index 中的 Mapping 用來定義索引中的欄位名稱與類型，**相當於關聯型數據庫中創建Table時指定的 Schema**，但在 Elasticsearch 並不一定要指定 Index Mapping 才能儲存資料 Elasticsearch 其特有的 Dynamic Mapping 機制也可以根據鍵入的資料來生成相對應的 Mapping field
 
 * 在創建索引時，順便設計類型就跟使用 SQL 一樣
+* 官方 Mapping [走這裡](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html)
 * 關於 body 裡面可以設定的參數 [走這裡](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html)
 
 ## 如何使用 Index Mapping

@@ -11,7 +11,7 @@
 
 官方網站傳送門 ["https://www.elastic.co/"]("https://www.elastic.co/")
 
-## Todo
+## Introduction
 
 * 實用篇:用來放一些實作的地方
   * Elastic stack 環境建置 : 使用 Docker 搭建基本實驗環境
@@ -22,3 +22,16 @@ console.log("Hello World!!");
 ```
 
 Thank you!
+
+## Todo
+
+* 環境
+  - [X] 初階 Elasticsearch With Docker
+  - [ ] 初階 Elasticsearch With DockerCompose
+* Elasticsearch
+  - [X] Mapping
+  - [ ] Index Aliases
+  - [ ] Analyzer
+  - [ ] Search
+* 未來式
+  - [ ] 理解 Elastic Common Schema

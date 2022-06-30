@@ -22,7 +22,7 @@ module.exports = {
                       ['/chapter2/01Elasticsearchintroduction', 'Elasticsearch 基本'],
                       ['/chapter2/02ElasticsearchBasicIndex',   'Elasticsearch Index'],
                       ['/chapter2/02ElasticsearchMapping',      'Elasticsearch Mapping'],
-                      ['/chapter2/02ElasticsearchAliases',      'Elasticsearch Alias'],
+                      ['/chapter2/02ElasticsearchAliases',      'Elasticsearch Aliases'],
                       ['/chapter2/03Elasticsearchcat',          'Elasticsearch cat']
                     ]
                   }
