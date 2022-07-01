@@ -12,6 +12,8 @@
 * 方便修改 Mapping
 * 如同關聯型資料庫中的 View 表
 
+使用場景如下
+
 :star: 以下打一百個星號 :star: * 100
 
 在 elasticsearch 中別名有兩種，**在查資料的時候先確定文章是在說哪種 alias**，這一篇是紀錄  index alias，在官方文件中
@@ -22,3 +24,17 @@
 :blue_book: Reference
 
 * 官方文件；[走這裡](https://www.elastic.co/guide/en/elasticsearch/reference/current/aliases.html)
+
+## Index Alias 的使用
+
+
+
+### 列出所有的 Alias
+
+```sh
+GET _cat/aliases?v
+```
+
+![列出所有別名](../chapter2/../.vuepress/public/chapter2/Aliases/listedaliases.png)
+
+### 
