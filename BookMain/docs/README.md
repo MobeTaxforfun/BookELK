@@ -39,6 +39,8 @@ Thank you!
   - [ ] Index Aliases
   - [ ] Analyzer
   - [ ] Search
+    - [ ] Full Text Query
+    - [ ] Term Query
 * Elasticsearch Demo I
   - [ ] 申請故宮 Open data
   - [ ] 抓取資料
