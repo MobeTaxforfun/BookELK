@@ -8,7 +8,7 @@
     
     <meta name="description" content="已經到了不記下來就會忘記的年紀了，紀錄一下自身學習 Elasticsearch;Logstash;Kibana;Beats 的一些歷程">
     
-    <link rel="preload" href="/BookELK/assets/css/0.styles.d96730b3.css" as="style"><link rel="preload" href="/BookELK/assets/js/app.b14f90d1.js" as="script"><link rel="preload" href="/BookELK/assets/js/2.fc0e2a7d.js" as="script"><link rel="preload" href="/BookELK/assets/js/5.5145f1ff.js" as="script"><link rel="prefetch" href="/BookELK/assets/js/10.b97b1dd2.js"><link rel="prefetch" href="/BookELK/assets/js/11.8bd07b98.js"><link rel="prefetch" href="/BookELK/assets/js/12.1b1bd6f2.js"><link rel="prefetch" href="/BookELK/assets/js/13.19c7d174.js"><link rel="prefetch" href="/BookELK/assets/js/14.8a676ba8.js"><link rel="prefetch" href="/BookELK/assets/js/15.e4e23a93.js"><link rel="prefetch" href="/BookELK/assets/js/3.16d67373.js"><link rel="prefetch" href="/BookELK/assets/js/4.1480f1fe.js"><link rel="prefetch" href="/BookELK/assets/js/6.3fbdb65c.js"><link rel="prefetch" href="/BookELK/assets/js/7.1add09b7.js"><link rel="prefetch" href="/BookELK/assets/js/8.b7f10887.js"><link rel="prefetch" href="/BookELK/assets/js/9.f8860e06.js">
+    <link rel="preload" href="/BookELK/assets/css/0.styles.d96730b3.css" as="style"><link rel="preload" href="/BookELK/assets/js/app.80803fac.js" as="script"><link rel="preload" href="/BookELK/assets/js/2.00eb062c.js" as="script"><link rel="preload" href="/BookELK/assets/js/4.98e710ec.js" as="script"><link rel="prefetch" href="/BookELK/assets/js/10.b6952e66.js"><link rel="prefetch" href="/BookELK/assets/js/11.61ac1774.js"><link rel="prefetch" href="/BookELK/assets/js/12.1b1bd6f2.js"><link rel="prefetch" href="/BookELK/assets/js/13.efb14377.js"><link rel="prefetch" href="/BookELK/assets/js/14.39e4c730.js"><link rel="prefetch" href="/BookELK/assets/js/15.ee6ea5a6.js"><link rel="prefetch" href="/BookELK/assets/js/3.20c13582.js"><link rel="prefetch" href="/BookELK/assets/js/5.2fb453da.js"><link rel="prefetch" href="/BookELK/assets/js/6.13519970.js"><link rel="prefetch" href="/BookELK/assets/js/7.5edc7810.js"><link rel="prefetch" href="/BookELK/assets/js/8.296949f5.js"><link rel="prefetch" href="/BookELK/assets/js/9.166d6b41.js">
     <link rel="stylesheet" href="/BookELK/assets/css/0.styles.d96730b3.css">
   </head>
   <body>
@@ -24,19 +24,51 @@ GET bookstore/_alias/mybookstore
 </code></pre></div><div class="language-JSON extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
     <span class="token property">&quot;acknowledged&quot;</span> <span class="token operator">:</span> <span class="token boolean">true</span>
 <span class="token punctuation">}</span>
-</code></pre></div></li></ul></li> <li><p>Aliases API</p></li></ul> <blockquote><p>Performs one or more alias actions in a single atomic operation.</p></blockquote> <p>透過原子操作來設定 Aliases，當成類似檢視表的功能只取出，出版社為悅知文化的資料</p> <div class="language-sh extra-class"><pre class="language-sh"><code>POST /_aliases
+</code></pre></div></li></ul></li> <li><p>Aliases API (類似檢視表用法)</p> <blockquote><p>Performs one or more alias actions in a single atomic operation.</p></blockquote> <p>透過原子操作來設定 Aliases，當成類似檢視表的功能只取出，只取出規格為320頁的書籍</p> <div class="language-sh extra-class"><pre class="language-sh"><code>POST _aliases
 <span class="token punctuation">{</span>
-  <span class="token string">&quot;actions&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;actions&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       <span class="token string">&quot;add&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
         <span class="token string">&quot;index&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;bookstore&quot;</span>,
         <span class="token string">&quot;alias&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;mybookstore&quot;</span>,
-        <span class="token string">&quot;filter&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;term&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;publisher&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;悅知文化&quot;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+        <span class="token string">&quot;filter&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;match&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;publisher&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;悅知文化&quot;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
-</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div><p>用 alias 進行搜尋</p> <div class="language-sh extra-class"><pre class="language-sh"><code>GET /mybookstore/_search
+</code></pre></div><div class="language-JSON extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;hits&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;_index&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;bookstore&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;_type&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;_doc&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;_id&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;_score&quot;</span> <span class="token operator">:</span> <span class="token number">1.0</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;_source&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">&quot;title&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;對你說的謊【博客來獨家限量贈：番外篇】&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;author&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;尾巴&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;publisher&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;悅知文化&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;publishTime&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;2022-07-04&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;language&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;繁體中文&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;price&quot;</span> <span class="token operator">:</span> <span class="token number">340</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;introduction&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;博客來、金石堂___青春文學暢銷作家．尾巴 全新校園揪心篇章即便此刻的我並不認識那個人，但過去我的傷痛，卻像是穿越了時空，直直地傳達給——我所遺忘的，去年的你。&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;country&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;台灣、蘭嶼、綠島、澎湖、金門、馬祖&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;ISBN&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;9789865102258&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;tag&quot;</span> <span class="token operator">:</span> <span class="token punctuation">[</span>
+              <span class="token string">&quot;文學小說&quot;</span><span class="token punctuation">,</span>
+              <span class="token string">&quot;華文創作&quot;</span><span class="token punctuation">,</span>
+              <span class="token string">&quot;小說&quot;</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;spec&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token property">&quot;Bookbinding&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;平裝&quot;</span><span class="token punctuation">,</span>
+              <span class="token property">&quot;page&quot;</span> <span class="token operator">:</span> <span class="token number">320</span><span class="token punctuation">,</span>
+              <span class="token property">&quot;grade&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;普通級&quot;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>Aliases API (Reindex)</p> <p>算是 Aliases 重要的一種應用就是 Re-index，某些時候需要將 Index 重新 Mapping 或是重新指定 shards;replicas 時可以這樣做(因為 index 是不能直接更新的)</p> <ul><li>新建一個 index v2</li> <li>Reindex  index_v1 to index_v2</li> <li>把 alias 指到 index_v2</li> <li>刪除原來的 index_v1</li> <li>完成 index 的更新</li></ul> <p><img src="/BookELK/assets/img/aliasreindex.47a01f4a.png" alt="使用aliasReindex"></p></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/BookELK/chapter2/02ElasticsearchMapping.html" class="prev">
         Elasticsearch Mapping
@@ -45,6 +77,6 @@ GET bookstore/_alias/mybookstore
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/BookELK/assets/js/app.b14f90d1.js" defer></script><script src="/BookELK/assets/js/2.fc0e2a7d.js" defer></script><script src="/BookELK/assets/js/5.5145f1ff.js" defer></script>
+    <script src="/BookELK/assets/js/app.80803fac.js" defer></script><script src="/BookELK/assets/js/2.00eb062c.js" defer></script><script src="/BookELK/assets/js/4.98e710ec.js" defer></script>
   </body>
 </html>
