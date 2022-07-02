@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Elasticsearch Analyzer | 我的 Elastic Stack 筆記</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="已經到了不記下來就會忘記的年紀了，紀錄一下自身學習 Elasticsearch;Logstash;Kibana;Beats 的一些歷程">
+    
+    <link rel="preload" href="/BookELK/assets/css/0.styles.d96730b3.css" as="style"><link rel="preload" href="/BookELK/assets/js/app.da07df66.js" as="script"><link rel="preload" href="/BookELK/assets/js/2.00eb062c.js" as="script"><link rel="preload" href="/BookELK/assets/js/14.1bc2a7b9.js" as="script"><link rel="prefetch" href="/BookELK/assets/js/10.4fb4e950.js"><link rel="prefetch" href="/BookELK/assets/js/11.61ac1774.js"><link rel="prefetch" href="/BookELK/assets/js/12.610875a0.js"><link rel="prefetch" href="/BookELK/assets/js/13.efb14377.js"><link rel="prefetch" href="/BookELK/assets/js/15.3f3db6f3.js"><link rel="prefetch" href="/BookELK/assets/js/16.125bb692.js"><link rel="prefetch" href="/BookELK/assets/js/3.3acf8f03.js"><link rel="prefetch" href="/BookELK/assets/js/4.809b405f.js"><link rel="prefetch" href="/BookELK/assets/js/5.0a19a03c.js"><link rel="prefetch" href="/BookELK/assets/js/6.bdc0e6e2.js"><link rel="prefetch" href="/BookELK/assets/js/7.5edc7810.js"><link rel="prefetch" href="/BookELK/assets/js/8.296949f5.js"><link rel="prefetch" href="/BookELK/assets/js/9.166d6b41.js">
+    <link rel="stylesheet" href="/BookELK/assets/css/0.styles.d96730b3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/BookELK/" class="home-link router-link-active"><!----> <span class="site-name">我的 Elastic Stack 筆記</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Elastic stack 實用篇</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/BookELK/chapter1/buildenvironmet.html" class="sidebar-link">Elastic stack 環境建置</a></li><li><a href="/BookELK/chapter1/buildenvwithdockercompose.html" class="sidebar-link">Elastic stack 環境建置(docker compose)</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Elasticsearch 入門</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/BookELK/chapter2/01Elasticsearchintroduction.html" class="sidebar-link">Elasticsearch 基本</a></li><li><a href="/BookELK/chapter2/01ElasticsearchTemplate.html" class="sidebar-link">Elasticsearch 測試資料</a></li><li><a href="/BookELK/chapter2/02ElasticsearchBasicIndex.html" class="sidebar-link">Elasticsearch Index</a></li><li><a href="/BookELK/chapter2/02ElasticsearchMapping.html" class="sidebar-link">Elasticsearch Mapping</a></li><li><a href="/BookELK/chapter2/02ElasticsearchAliases.html" class="sidebar-link">Elasticsearch Aliases</a></li><li><a href="/BookELK/chapter2/02ElasticsearchAnalyzer.html" aria-current="page" class="active sidebar-link">Elasticsearch Analyzer</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BookELK/chapter2/02ElasticsearchAnalyzer.html#analyzer-how-to-do" class="sidebar-link">Analyzer How to do</a></li></ul></li><li><a href="/BookELK/chapter2/03Elasticsearchcat.html" class="sidebar-link">Elasticsearch cat</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="elasticsearch-analyzer"><a href="#elasticsearch-analyzer" class="header-anchor">#</a> Elasticsearch Analyzer</h1> <p>Elasticsearch 中的分析器，是為什麼 Elasticsearch 能夠作為搜尋引擎的關鍵，在將 Document 加入 index 前，會先透過 Analyzer 將 Document 進行拆解(過濾、分詞)，並建立反向索引，以便 Elasticsearch 透過反向索引進行字詞搜尋</p> <h2 id="analyzer-how-to-do"><a href="#analyzer-how-to-do" class="header-anchor">#</a> Analyzer How to do</h2></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/BookELK/chapter2/02ElasticsearchAliases.html" class="prev">
+        Elasticsearch Aliases
+      </a></span> <span class="next"><a href="/BookELK/chapter2/03Elasticsearchcat.html">
+        Elasticsearch cat
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/BookELK/assets/js/app.da07df66.js" defer></script><script src="/BookELK/assets/js/2.00eb062c.js" defer></script><script src="/BookELK/assets/js/14.1bc2a7b9.js" defer></script>
+  </body>
+</html>
