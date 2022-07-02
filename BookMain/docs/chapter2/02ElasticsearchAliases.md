@@ -45,7 +45,7 @@ GET _cat/aliases?v
 
 ![列出所有別名](../.vuepress/public/chapter2/Aliases/listedaliases.png)
 
-### 新增、更新 Index Alias
+## 新增、更新 Index Alias
 
 [官方文件](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/indices-add-alias.html)
 
@@ -74,103 +74,103 @@ GET _cat/aliases?v
 
     ![使用alias來查詢](../.vuepress/public/chapter2/Aliases/listindexbyalias.png)
 
-* 查詢 alias
+## 查詢 alias
 
-  * `GET _alias/<alias>` 拿搜尋
-  * `GET _alias` 全部拿
-  * `GET <target>/_alias/<alias>` 在某個Index下拿
-
-    ```sh
-    GET bookstore/_alias/*
-    GET bookstore/_alias/mybookstore
-    ```
-
-    ![取得alias](../.vuepress/public/chapter2/Aliases/getalias.png)
-
-* 刪除 alias
-
-  * `DELETE /<index>/_alias/<alias>`
-  * `DELETE /<index>/_aliases/<alias>`
-
-    ```sh
-    DELETE /bookstore/_alias/mybookstore
-    ```
-
-    ```JSON
-    {
-        "acknowledged" : true
-    }
-    ```
-
-* Aliases API (類似檢視表用法)
-
-  > Performs one or more alias actions in a single atomic operation.
-
-  透過原子操作來設定 Aliases，當成類似檢視表的功能只取出，只取出規格為320頁的書籍
+* `GET _alias/<alias>` 拿搜尋
+* `GET _alias` 全部拿
+* `GET <target>/_alias/<alias>` 在某個Index下拿
 
   ```sh
-  POST _aliases
-  {
-      "actions": [
-      {
-        "add": {
-          "index": "bookstore",
-          "alias": "mybookstore",
-          "filter": { "match": { "publisher": "悅知文化" } }
-        }
-      }
-    ]
-  }
+  GET bookstore/_alias/*
+  GET bookstore/_alias/mybookstore
   ```
 
-  用 alias 進行搜尋
+  ![取得alias](../.vuepress/public/chapter2/Aliases/getalias.png)
+
+## 刪除 alias
+
+* `DELETE /<index>/_alias/<alias>`
+* `DELETE /<index>/_aliases/<alias>`
 
   ```sh
-  GET /mybookstore/_search
+  DELETE /bookstore/_alias/mybookstore
   ```
 
   ```JSON
   {
-    "hits" : [
-          {
-            "_index" : "bookstore",
-            "_type" : "_doc",
-            "_id" : "1",
-            "_score" : 1.0,
-            "_source" : {
-              "title" : "對你說的謊【博客來獨家限量贈：番外篇】",
-              "author" : "尾巴",
-              "publisher" : "悅知文化",
-              "publishTime" : "2022-07-04",
-              "language" : "繁體中文",
-              "price" : 340,
-              "introduction" : "博客來、金石堂___青春文學暢銷作家．尾巴 全新校園揪心篇章即便此刻的我並不認識那個人，但過去我的傷痛，卻像是穿越了時空，直直地傳達給——我所遺忘的，去年的你。",
-              "country" : "台灣、蘭嶼、綠島、澎湖、金門、馬祖",
-              "ISBN" : "9789865102258",
-              "tag" : [
-                "文學小說",
-                "華文創作",
-                "小說"
-              ],
-              "spec" : {
-                "Bookbinding" : "平裝",
-                "page" : 320,
-                "grade" : "普通級"
-              }
-            }
-          }
-        ]
+      "acknowledged" : true
   }
   ```
 
-* Aliases API (Reindex)
+## Aliases API (類似檢視表用法)
 
-  算是 Aliases 重要的一種應用就是 Re-index，某些時候需要將 Index 重新 Mapping 或是重新指定 shards;replicas 時可以這樣做(因為 index 是不能直接更新的)
+> Performs one or more alias actions in a single atomic operation.
 
-  * 新建一個 index v2
-  * Reindex  index_v1 to index_v2
-  * 把 alias 指到 index_v2
-  * 刪除原來的 index_v1
-  * 完成 index 的更新
+透過原子操作來設定 Aliases，當成類似檢視表的功能只取出，只取出規格為320頁的書籍
 
-  ![使用aliasReindex](../.vuepress/public/chapter2/Aliases/aliasreindex.png)
+```sh
+POST _aliases
+{
+    "actions": [
+    {
+      "add": {
+        "index": "bookstore",
+        "alias": "mybookstore",
+        "filter": { "match": { "publisher": "悅知文化" } }
+      }
+    }
+  ]
+}
+```
+
+用 alias 進行搜尋
+
+```sh
+GET /mybookstore/_search
+```
+
+```JSON
+{
+  "hits" : [
+        {
+          "_index" : "bookstore",
+          "_type" : "_doc",
+          "_id" : "1",
+          "_score" : 1.0,
+          "_source" : {
+            "title" : "對你說的謊【博客來獨家限量贈：番外篇】",
+            "author" : "尾巴",
+            "publisher" : "悅知文化",
+            "publishTime" : "2022-07-04",
+            "language" : "繁體中文",
+            "price" : 340,
+            "introduction" : "博客來、金石堂___青春文學暢銷作家．尾巴 全新校園揪心篇章即便此刻的我並不認識那個人，但過去我的傷痛，卻像是穿越了時空，直直地傳達給——我所遺忘的，去年的你。",
+            "country" : "台灣、蘭嶼、綠島、澎湖、金門、馬祖",
+            "ISBN" : "9789865102258",
+            "tag" : [
+              "文學小說",
+              "華文創作",
+              "小說"
+            ],
+            "spec" : {
+              "Bookbinding" : "平裝",
+              "page" : 320,
+              "grade" : "普通級"
+            }
+          }
+        }
+      ]
+}
+```
+
+## Aliases API (Reindex)
+
+算是 Aliases 重要的一種應用就是 Re-index，某些時候需要將 Index 重新 Mapping 或是重新指定 shards;replicas 時可以這樣做(因為 index 是不能直接更新的)
+
+* 新建一個 index v2
+* Reindex  index_v1 to index_v2
+* 把 alias 指到 index_v2
+* 刪除原來的 index_v1
+* 完成 index 的更新
+
+![使用aliasReindex](../.vuepress/public/chapter2/Aliases/aliasreindex.png)
