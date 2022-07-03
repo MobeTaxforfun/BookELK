@@ -9,7 +9,7 @@ module.exports = {
                 sidebar: [
                   {
                     title: 'Elastic stack 實用篇',
-                    collapsable: false,
+                    collapsable: true,
                     children: [
                       ['/chapter1/buildenvironmet', 'Elastic stack 環境建置'],
                       ['/chapter1/buildenvwithdockercompose', 'Elastic stack 環境建置(docker compose)'],
@@ -17,7 +17,7 @@ module.exports = {
                   },
                   {
                     title: 'Elasticsearch 入門',
-                    collapsable: false,
+                    collapsable: true,
                     children: [
                       ['/chapter2/01Elasticsearchintroduction', 'Elasticsearch 基本'],
                       ['/chapter2/01ElasticsearchTemplate',     'Elasticsearch 測試資料'],
@@ -25,6 +25,7 @@ module.exports = {
                       ['/chapter2/02ElasticsearchMapping',      'Elasticsearch Mapping'],
                       ['/chapter2/02ElasticsearchAliases',      'Elasticsearch Aliases'],
                       ['/chapter2/02ElasticsearchAnalyzer',     'Elasticsearch Analyzer'],
+                      ['/chapter2/02ElasticsearchAnalyzerCh',     'Elasticsearch 中文分詞'],
                       ['/chapter2/03Elasticsearchcat',          'Elasticsearch cat']
                     ]
                   }
