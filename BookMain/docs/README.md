@@ -40,15 +40,17 @@ Thank you!
   - [X] Analyzer
     - [ ]Custom Analyzer
   - [ ] 中文 Analyzer
+    - [ ] IK中文
+    - [ ] 結巴中文
   - [ ] Search
     - [ ] Full Text Query
     - [ ] Term Query
-* Elasticsearch Demo I
-  - [ ] 申請故宮 Open data
-  - [ ] 抓取資料
-  - [ ] 將資料入庫
-  - [ ] 使用 Elasticsearch 進行持久化
-  - [ ] 特定欄位實踐全文搜索
+* ~~Elasticsearch Demo I~~ (故宮API請不下來是怎樣==)
+  - [ ] ~~申請故宮 Open data~~
+  - [ ] ~~抓取資料~~
+  - [ ] ~~將資料入庫~~
+  - [ ] ~~使用 Elasticsearch 進行持久化~~
+  - [ ] ~~特定欄位實踐全文搜索~~
 
 * Elasticsearch Demo II
   - [ ] PTT 對答資料;資料來源 [很厲害的 NLP Github](https://github.com/zake7749)

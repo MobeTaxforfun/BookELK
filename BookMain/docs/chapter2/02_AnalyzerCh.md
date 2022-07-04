@@ -10,6 +10,28 @@
 
 ## 使用中文分詞
 
+```JSON
+PUT /ikanalyzertest/_mapping
+{
+  "properties":{
+    "title":{
+      "type":"text",
+      "analyzer":"ik_max_word"
+    }
+  }
+}
+```
+
+```JSON
+GET /_analyze/
+{
+  "analyzer": "ik_smart",
+  "text": "憧憬是距離理解最遙遠的感情"
+}
+```
+
 ## 字庫
 
 ## 結巴分詞
+
+待續

@@ -19,14 +19,17 @@ module.exports = {
                     title: 'Elasticsearch 入門',
                     collapsable: true,
                     children: [
-                      ['/chapter2/01Elasticsearchintroduction', 'Elasticsearch 基本'],
-                      ['/chapter2/01ElasticsearchTemplate',     'Elasticsearch 測試資料'],
-                      ['/chapter2/02ElasticsearchBasicIndex',   'Elasticsearch Index'],
-                      ['/chapter2/02ElasticsearchMapping',      'Elasticsearch Mapping'],
-                      ['/chapter2/02ElasticsearchAliases',      'Elasticsearch Aliases'],
-                      ['/chapter2/02ElasticsearchAnalyzer',     'Elasticsearch Analyzer'],
-                      ['/chapter2/02ElasticsearchAnalyzerCh',     'Elasticsearch 中文分詞'],
-                      ['/chapter2/03Elasticsearchcat',          'Elasticsearch cat']
+                      ['/chapter2/01_Introduction', '基本'],
+                      ['/chapter2/01_Template',     '測試資料'],
+                      ['/chapter2/02_Index',        'Index'],
+                      ['/chapter2/02_Document',     'Document'],
+                      ['/chapter2/02_Mapping',      'Mapping'],
+                      ['/chapter2/02_Aliases',      'Index Aliases'],
+                      ['/chapter2/02_Analyzer',     'Analyzer'],
+                      ['/chapter2/02_AnalyzerCh',   'Analyzer 中文分詞'],
+                      ['/chapter2/02_SearchAPI',    'Search API'],
+                      ['/chapter2/02_Query',        'Query'],
+                      ['/chapter2/03_Cat',          'cat']
                     ]
                   }
                   //,
