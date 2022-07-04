@@ -4,9 +4,15 @@ Elasticsearch 中的分析器，是為什麼 Elasticsearch 能夠作為搜尋引
 
 * [官方API文件](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html)
 
-## Analyzer 基本 
+## Analyzer 基本
 
-### Analyzer 基本使用
+在 elasticsearch 分析器的基本流程為 Character Filter > Tokenizer > Token Filter
+
+* Character Filter : 過濾，根據所選的 character filter 會將不需要的字符給過濾掉；etc : HTML標籤，標點符號
+* Tokenizer : 分詞，每個分析器必備的流程，負責重要的分詞處理
+* Token Filter : 將分詞後的 Token 做個別處理；etc :大小寫轉換
+
+## Analyzer 使用
 
 使用一個簡單的範例來看看 Elasticsearch 是如何分詞的，先將 The Old Man and the Sea 插入索引中
 
@@ -106,7 +112,7 @@ GET _analyze
 }
 ```
 
-### 內建分析器
+## 內建分析器
 
 Elasticsearch 內建幾個分析器如下:
 
@@ -123,125 +129,130 @@ Elasticsearch 內建幾個分析器如下:
 
 稍微整理一下內建分析器的 Example output ，都是以官方範例 "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone." 為基準，只是放在一起比較容易比較其中差異 :
 
-* **Standard Analyzer**  
-    預設的 `Analyzer` 若無特別指定就是這個，直接切分；小寫顯示
+### **Standard Analyzer**
 
-    ```JSON
-    POST _analyze
-    {
-      "analyzer": "standard",
-      "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
-    }
-    ```
+預設的 `Analyzer` 若無特別指定就是這個，直接切分；小寫顯示
 
-    輸出:
+```JSON
+POST _analyze
+{
+  "analyzer": "standard",
+  "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
+}
+```
 
-    ```JSON
-    [ the, 2, quick, brown, foxes, jumped, over, the, lazy, dog's, bone ]
-    ```
+輸出:
 
-* **Simple Analyzer**
-    >The simple analyzer breaks text into tokens at any non-letter character, such as numbers, spaces, hyphens and apostrophes, discards non-letter characters, and changes uppercase to lowercase.
-    將 Text 以數字、空白、符號分詞，並刪去非字母的文字；小寫顯示
+```JSON
+[ the, 2, quick, brown, foxes, jumped, over, the, lazy, dog's, bone ]
+```
 
-    ```JSON
-    POST _analyze
-    {
-      "analyzer": "simple",
-      "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
-    }
-    ```
+### **Simple Analyzer**
 
-    輸出:
+>The simple analyzer breaks text into tokens at any non-letter character, such as numbers, spaces, hyphens and apostrophes, discards non-letter characters, and changes uppercase to lowercase.
+將 Text 以數字、空白、符號分詞，並刪去非字母的文字；小寫顯示
 
-    ```JSON
-    [ the, quick, brown, foxes, jumped, over, the, lazy, dog, s, bone ]
-    ```
+```JSON
+POST _analyze
+{
+  "analyzer": "simple",
+  "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
+}
+```
 
-* **Whitespace Analyzer**
-    >The whitespace analyzer breaks text into terms whenever it encounters a whitespace character.
+輸出:
 
-    簡單粗暴，遇到空白就斷詞；不轉小寫
+```JSON
+[ the, quick, brown, foxes, jumped, over, the, lazy, dog, s, bone ]
+```
 
-    ```JSON
-    POST _analyze
-    {
-      "analyzer": "whitespace",
-      "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
-    }
-    ```
+### **Whitespace Analyzer**
 
-    輸出
+>The whitespace analyzer breaks text into terms whenever it encounters a whitespace character.
 
-    ```JSON
-    [ The, 2, QUICK, Brown-Foxes, jumped, over, the, lazy, dog's, bone. ]
-    ```
+簡單粗暴，遇到空白就斷詞；不轉小寫
 
-* **Stop Analyzer**
-    >The stop analyzer is the same as the simple analyzer but adds support for removing stop words. It defaults to using the _english_ stop words.
+```JSON
+POST _analyze
+{
+  "analyzer": "whitespace",
+  "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
+}
+```
 
-    與 `simple analyzer` 相同，但多了**過濾** `Stop Analyzer` 使用 `_english_` 來過濾特定的 `stop words`(停用詞)
+輸出
 
-    ```JSON
-    POST _analyze
-    {
-      "analyzer": "stop",
-      "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
-    }
-    ```
+```JSON
+[ The, 2, QUICK, Brown-Foxes, jumped, over, the, lazy, dog's, bone. ]
+```
 
-    輸出結果將 `the`;`2` 停用詞過濾掉了 [有一個章節專門描述停用詞](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stop-tokenfilter.html)
+### **Stop Analyzer**
 
-    ```JSON
-    [ quick, brown, foxes, jumped, over, lazy, dog, s, bone ]
-    ```
+>The stop analyzer is the same as the simple analyzer but adds support for removing stop words. It defaults to using the _english_ stop words.
 
-* **Keyword Analyzer**  
-    > The keyword analyzer is a “noop” analyzer which returns the entire input string as a single token.
+與 `simple analyzer` 相同，但多了**過濾** `Stop Analyzer` 使用 `_english_` 來過濾特定的 `stop words`(停用詞)
 
-    一句話總結:就是【不分詞】
+```JSON
+POST _analyze
+{
+  "analyzer": "stop",
+  "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
+}
+```
 
-    ```JSON
-    POST _analyze
-    {
-        "analyzer": "keyword",
-        "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
-    }
-    ```
+輸出結果將 `the`;`2` 停用詞過濾掉了 [有一個章節專門描述停用詞](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stop-tokenfilter.html)
 
-    輸出
+```JSON
+[ quick, brown, foxes, jumped, over, lazy, dog, s, bone ]
+```
 
-    ```JSON
-    [ The 2 QUICK Brown-Foxes jumped over the lazy dog's bone. ]
-    ```
+### **Keyword Analyzer**  
 
-* **Pattern Analyzer**
+> The keyword analyzer is a “noop” analyzer which returns the entire input string as a single token.
 
-    > The pattern analyzer uses a regular expression to split the text into terms. The regular expression should match the token separators not the tokens themselves. The regular expression defaults to \W+ (or all non-word characters).
+一句話總結:就是【不分詞】
 
-    以正則表示式作為分詞依據，預設是 \W+，很玄幻的分析器有機會用到在特別紀錄
+```JSON
+POST _analyze
+{
+    "analyzer": "keyword",
+    "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
+}
+```
 
-    ```JSON
-    POST _analyze
-    {
-      "analyzer": "pattern",
-      "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
-    }
-    ```
+輸出
 
-    輸出
+```JSON
+[ The 2 QUICK Brown-Foxes jumped over the lazy dog's bone. ]
+```
 
-    ```JSON
-    [ the, 2, quick, brown, foxes, jumped, over, the, lazy, dog, s, bone ]
-    ```
+### **Pattern Analyzer**
 
-* **Language Analyzers**
+> The pattern analyzer uses a regular expression to split the text into terms. The regular expression should match the token separators not the tokens themselves. The regular expression defaults to \W+ (or all non-word characters).
 
-    >A set of analyzers aimed at analyzing specific language text  
-    特定語言的分析器，支援的語言[點這裡](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html)
-    然後沒有中文，中文在ES中是特別的存在，開一節特別紀錄
+以正則表示式作為分詞依據，預設是 \W+，很玄幻的分析器有機會用到在特別紀錄
 
-## 對Index Mapping Analyzer
+```JSON
+POST _analyze
+{
+  "analyzer": "pattern",
+  "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
+}
+```
+
+輸出
+
+```JSON
+[ the, 2, quick, brown, foxes, jumped, over, the, lazy, dog, s, bone ]
+```
+
+### **Language Analyzers**
+
+  >A set of analyzers aimed at analyzing specific language text  
+  特定語言的分析器，支援的語言[點這裡](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html)
+  然後沒有中文，中文在ES中是特別的存在，開一節特別紀錄
+
+## Index Mapping & Analyzer
 
 可以在創建 Index 時 Mapping 自己想要的 Analyzer，但要注意的是 Mapping 後的欄位就不能更改其 Analyzer 了，除非使用 Reindex
 
@@ -332,7 +343,7 @@ POST /book-multi-fields/_doc/1
 }
 ```
 
-接著搜尋
+接著搜尋以下三種情況:
 
 ```JSON
 GET /book-multi-fields/_search
@@ -366,3 +377,10 @@ GET /book-multi-fields/_search
   }
 }
 ```
+
+![multifield比較](../.vuepress/public/chapter2/analyzer/mutilfieldscompare.png)  
+結果為第一個命中，第二個未命中，第三個命中，這是因為條件為 `title` 時分析器為 `simple` 會保留 `the`，條件為 `title.english` 時，分析器 english 會將 `the` 作為 stop words 過濾掉。
+
+## 客製化 Analyzer
+
+待補

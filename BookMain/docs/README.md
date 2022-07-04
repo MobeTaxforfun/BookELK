@@ -36,8 +36,10 @@ Thank you!
   - [ ] Winlogbeat
 * Elasticsearch
   - [X] Mapping
-  - [ ] Index Aliases
-  - [ ] Analyzer
+  - [X] Index Aliases
+  - [X] Analyzer
+    - [ ]Custom Analyzer
+  - [ ] 中文 Analyzer
   - [ ] Search
     - [ ] Full Text Query
     - [ ] Term Query
