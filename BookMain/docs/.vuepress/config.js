@@ -16,6 +16,10 @@ module.exports = {
                     ]
                   },
                   {
+                    title: 'Elastic Stack Demo',
+                    collapsable: true
+                  },
+                  {
                     title: 'Elasticsearch 入門',
                     collapsable: true,
                     children: [
@@ -31,6 +35,18 @@ module.exports = {
                       ['/chapter2/02_Query',        'Query'],
                       ['/chapter2/03_Cat',          'cat']
                     ]
+                  },
+                  {
+                    title: 'kibana 入門',
+                    collapsable: true
+                  },
+                  {
+                    title: 'Logstash 入門',
+                    collapsable: true
+                  },
+                  {
+                    title: 'Filebeat 入門',
+                    collapsable: true
                   }
                   //,
                   // {
