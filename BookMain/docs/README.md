@@ -3,7 +3,7 @@
 一個不成材的工程師  
 已經到了不記下來就會忘記的年紀了  
 紀錄一下自身學習 Elasticsearch; Logstash; Kibana; Beats 等等 Elastic Stack 的一些歷程  
-努力搬磚中  
+筆記轉移中 ∠( ᐛ 」∠)＿
 
 ## Elastic Stack
 

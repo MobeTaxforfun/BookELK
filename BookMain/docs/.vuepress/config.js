@@ -8,7 +8,7 @@ module.exports = {
             '/':{
                 sidebar: [
                   {
-                    title: 'Elastic stack 實用篇',
+                    title: 'Elastic stack',
                     collapsable: true,
                     children: [
                       ['/chapter1/buildenvironmet', 'Elastic stack 環境建置'],
