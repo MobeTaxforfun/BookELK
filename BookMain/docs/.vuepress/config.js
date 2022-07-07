@@ -20,7 +20,7 @@ module.exports = {
                     collapsable: true
                   },
                   {
-                    title: 'Elasticsearch 入門',
+                    title: 'Elasticsearch',
                     collapsable: true,
                     children: [
                       ['/chapter2/01_Introduction', '基本'],
@@ -37,15 +37,15 @@ module.exports = {
                     ]
                   },
                   {
-                    title: 'kibana 入門',
+                    title: 'kibana',
                     collapsable: true
                   },
                   {
-                    title: 'Logstash 入門',
+                    title: 'Logstash',
                     collapsable: true
                   },
                   {
-                    title: 'Filebeat 入門',
+                    title: 'Filebeat ',
                     collapsable: true
                   }
                   //,
