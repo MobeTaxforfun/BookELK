@@ -22,6 +22,7 @@ module.exports = {
                   {
                     title: 'Elasticsearch',
                     collapsable: true,
+                    sidebarDepth: 2, 
                     children: [
                       ['/chapter2/01_Introduction', '基本'],
                       ['/chapter2/01_Template',     '測試資料'],
