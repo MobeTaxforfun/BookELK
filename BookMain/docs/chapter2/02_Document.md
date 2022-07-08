@@ -22,7 +22,7 @@
     }
     ```
 
-    ![第一筆資料](../.vuepress/public/chapter2/document/helloworld.png)
+    ![第一筆資料](../.vuepress/public/chapter2/document/helloworld.png)  
     非常的簡單甚至不創建資料表或規定欄位就可以把數據落到磁盤中並持久化 (不過在真實的使用環境下，還是建議將需要搜尋的 Field 用 Mapping 建立相對應的 schema)
 
     建立成功會回傳

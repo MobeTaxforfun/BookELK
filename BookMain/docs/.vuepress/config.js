@@ -32,7 +32,8 @@ module.exports = {
                       ['/chapter2/02_Analyzer',     'Analyzer'],
                       ['/chapter2/02_AnalyzerCh',   'Analyzer 中文分詞'],
                       ['/chapter2/02_SearchAPI',    'Search API'],
-                      ['/chapter2/02_Query',        'Query'],
+                      ['/chapter2/02_Query',        'Query DSL'],
+                      ['/chapter2/02_Aggregations', 'Aggregations'],
                       ['/chapter2/03_Cat',          'cat']
                     ]
                   },
