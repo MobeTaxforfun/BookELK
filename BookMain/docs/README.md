@@ -13,12 +13,23 @@
 
 ## Introduction
 
-* 實用篇:用來放一些實作的地方
-  * Elastic stack 環境建置 : 使用 Docker 搭建基本實驗環境
-* 理解篇:用來放一些理論的地方
+:blue_book: 章節概述
+
+* Elastic stack : 總體ELK環境建置
+* Elastic Stack Demo : 存放一些小 Demo 的地方
+* Elasticsearch : Elasticsearch 相關使用心得
+* kibana : Kibana 相關使用心得
+* Logstash : Logstash 相關使用心得
+* Filebeat : Filebeat 相關使用心得
+
+:wrench: 相關建議
+
+* Docker 基本使用
+* Linux 基本使用
+* 對 NoSQL 有一定的了解，並認同 NoSQL 提供了不同的解決方案
 
 ```C#
-console.log("Hello World!!");
+console.log("Hello Elasticsearch and You Know, for Search !!");
 ```
 
 Thank you!
@@ -27,7 +38,7 @@ Thank you!
 
 * 環境
   - [X] 初階 Elasticsearch With Docker
-  - [ ] 初階 Elasticsearch With DockerCompose
+  - [X] 初階 Elasticsearch With DockerCompose
 * 日誌相關
   - [X] Filebeat NGINX
   - [ ] Filebeat IIS
@@ -38,13 +49,15 @@ Thank you!
   - [X] Mapping
   - [X] Index Aliases
   - [X] Analyzer
-    - [ ]Custom Analyzer
-  - [ ] 中文 Analyzer
-    - [ ] IK中文
+    - [ ] Custom Analyzer
+  - [X] 中文 Analyzer
+    - [X] IK中文
     - [ ] 結巴中文
   - [ ] Search
     - [ ] Full Text Query
     - [ ] Term Query
+* Logstash
+  - [ ] Load CSV File into Elasticsearch
 * ~~Elasticsearch Demo I~~ (故宮API請不下來是怎樣==)
   - [ ] ~~申請故宮 Open data~~
   - [ ] ~~抓取資料~~

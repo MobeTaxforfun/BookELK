@@ -165,6 +165,25 @@ GET accounts/_search?sort=account_number:asc&size=5
 GET accounts/_search?sort=account_number:asc&from=5&size=5
 ```
 
+### 範例合集
+
+```s
+GET accounts/_search?_source=firstname,lastname
+GET accounts/_search?q=lastname:Duke
+GET accounts/_search?q=firstname:Claudia AND lastname:Terry
+GET accounts/_search?q=age:[20 TO 25]
+GET accounts/_search?q=age:[20 TO 25}
+GET accounts/_search?q=age:[* TO 25}
+GET accounts/_search?q=city:("Bannock" or "Bethany")
+GET accounts/_search?q=(age:20 or gender:M) 
+GET accounts/_search?q=(age:20^5 or gender:M) 
+GET accounts/_search?sort=age:asc
+GET accounts/_search?sort=age:asc&_source=firstname,lastname
+GET accounts/_search?sort=account_number:asc&size=5
+GET accounts/_search?sort=account_number:asc&from=5&size=5
+GET accounts/_search?q=NOT state:HI
+```
+
 ## 查詢計畫
 
 `"profile": true`  
