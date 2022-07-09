@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Elastic stack 環境建置(docker compose) | 我的 Elastic Stack 筆記</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="已經到了不記下來就會忘記的年紀了，紀錄一下自身學習 Elasticsearch;Logstash;Kibana;Beats 的一些歷程">
+    
+    <link rel="preload" href="/BookELK/assets/css/0.styles.d96730b3.css" as="style"><link rel="preload" href="/BookELK/assets/js/app.9654e8fe.js" as="script"><link rel="preload" href="/BookELK/assets/js/2.2ceb4bd3.js" as="script"><link rel="preload" href="/BookELK/assets/js/13.b84c4365.js" as="script"><link rel="prefetch" href="/BookELK/assets/js/10.79a8b51c.js"><link rel="prefetch" href="/BookELK/assets/js/11.19e7cb19.js"><link rel="prefetch" href="/BookELK/assets/js/12.c4521a95.js"><link rel="prefetch" href="/BookELK/assets/js/14.5f7d0031.js"><link rel="prefetch" href="/BookELK/assets/js/15.3e47e172.js"><link rel="prefetch" href="/BookELK/assets/js/16.2b20e46d.js"><link rel="prefetch" href="/BookELK/assets/js/17.154b98a0.js"><link rel="prefetch" href="/BookELK/assets/js/18.28b02f34.js"><link rel="prefetch" href="/BookELK/assets/js/19.d631af19.js"><link rel="prefetch" href="/BookELK/assets/js/20.f27d23a2.js"><link rel="prefetch" href="/BookELK/assets/js/21.1ef5f283.js"><link rel="prefetch" href="/BookELK/assets/js/22.5267f4bf.js"><link rel="prefetch" href="/BookELK/assets/js/3.5af500ab.js"><link rel="prefetch" href="/BookELK/assets/js/4.d9bd080d.js"><link rel="prefetch" href="/BookELK/assets/js/5.60592056.js"><link rel="prefetch" href="/BookELK/assets/js/6.9020ee19.js"><link rel="prefetch" href="/BookELK/assets/js/7.b511d344.js"><link rel="prefetch" href="/BookELK/assets/js/8.9e124c98.js"><link rel="prefetch" href="/BookELK/assets/js/9.5061dadd.js">
+    <link rel="stylesheet" href="/BookELK/assets/css/0.styles.d96730b3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/BookELK/" class="home-link router-link-active"><!----> <span class="site-name">我的 Elastic Stack 筆記</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Elastic stack</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/BookELK/Elasticstack01/buildenvironmet.html" class="sidebar-link">Elastic stack 環境建置</a></li><li><a href="/BookELK/Elasticstack01/buildenvwithdockercompose.html" aria-current="page" class="active sidebar-link">Elastic stack 環境建置(docker compose)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BookELK/Elasticstack01/buildenvwithdockercompose.html#服務架構" class="sidebar-link">服務架構</a></li><li class="sidebar-sub-header"><a href="/BookELK/Elasticstack01/buildenvwithdockercompose.html#docker-compose-檔案結構" class="sidebar-link">Docker Compose 檔案結構</a></li><li class="sidebar-sub-header"><a href="/BookELK/Elasticstack01/buildenvwithdockercompose.html#docker-compose-啟動文件" class="sidebar-link">Docker Compose 啟動文件</a></li><li class="sidebar-sub-header"><a href="/BookELK/Elasticstack01/buildenvwithdockercompose.html#重要的-config" class="sidebar-link">重要的 Config</a></li><li class="sidebar-sub-header"><a href="/BookELK/Elasticstack01/buildenvwithdockercompose.html#基本使用" class="sidebar-link">基本使用</a></li><li class="sidebar-sub-header"><a href="/BookELK/Elasticstack01/buildenvwithdockercompose.html#排雷大隊" class="sidebar-link">排雷大隊</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Elastic Stack Demo</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Elasticsearch</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>kibana</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Logstash</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Filebeat </span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="elastic-stack-環境建置-docker-compose"><a href="#elastic-stack-環境建置-docker-compose" class="header-anchor">#</a> Elastic stack 環境建置(docker compose)</h1> <p>此篇用 docker compose 搭建 Elastic stack ，達到一鍵啟動 Elastic stack 單節點環境的效果，需要達到的目標如下</p> <ul><li>編寫專用的 docker compose yml 啟動服務</li> <li>將 Elastic stack 各項服務資料持久化到硬碟上</li> <li>將 Elastic stack 各項 Config 暴露到實體路徑</li> <li>詳細設定各種參數</li> <li>因為各種莫名奇妙的原因版號變成 7.17.1 了，<s>懶得改回 7.17.4...</s></li></ul> <p>Reference</p> <ul><li>架構參考至原文傳送門 <a href="https://github.com/deviantony/docker-elk" target="_blank" rel="noopener noreferrer">The Elastic stack (ELK) powered by Docker and Compose.<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>Filebeat 官方文件 <a href="https://www.elastic.co/guide/en/beats/filebeat/current/index.html" target="_blank" rel="noopener noreferrer">Filebeat Reference<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>Logstash 官方文件 <a href="https://www.elastic.co/guide/en/logstash/current/index.html" target="_blank" rel="noopener noreferrer">Logstash Reference<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h2 id="服務架構"><a href="#服務架構" class="header-anchor">#</a> 服務架構</h2> <p><img src="/BookELK/assets/img/elkdockercomposestructer.c5bcb7fd.jpg" alt="elkdockercomposestructer"></p> <h2 id="docker-compose-檔案結構"><a href="#docker-compose-檔案結構" class="header-anchor">#</a> Docker Compose 檔案結構</h2> <p>整個 ELK Stack 啟動文件如下，每個服務皆用一個資料夾維護其需要持久化的檔案分別為 elasticsearch;filebeat;kibana;logstash;nginx :</p> <div class="language-Text extra-class"><pre class="language-text"><code>|
+├── elasticsearch                       # elasticsearch
+│   ├── config                          # elasticsearch 設定文件
+│   │   └── elasticsearch.yml
+│   ├── data                            # 主要持久化資料的地方
+│   └── plugins                         # 預留要掛插件的資料夾
+|
+├── filebeat                            # filebeat
+│   ├── config                          # filebeat 設定文件
+│   │   └── filebeat.yml
+|   └── modules                         # filebeat modules 設定文件
+|       └── nginx.yml
+|
+├── kibana                              # kibana 
+│   └── config                          # kibana 設定文件
+│       └── kibana.yml
+|
+├── logstash                            # logstash
+│   ├── config                          # logstash 設定文件
+│   │   └── logstash.yml
+│   └── pipeline                        # logstash pipeline 設定文件
+│       └── logstash.conf
+|
+├── nginx                               # NGINX
+│   ├── conf.d                          # 預計放 Config 的地方
+│   ├── log                             # nginx log &gt; filebeat 主要會指向這邊並擷取資料
+│   |   ├── access.log
+│   |   └── error.log
+|   └── html                            # 放一些預設的靜態頁面以方便測試
+|
+└── docker-compose.yml                  # docker-compose up -d 在docker中執行上述所有服務
+</code></pre></div><h2 id="docker-compose-啟動文件"><a href="#docker-compose-啟動文件" class="header-anchor">#</a> Docker Compose 啟動文件</h2> <p>docker compose 啟動文件如下:</p> <ul><li>elasticsearch 單節點啟動 映射 9200 port; 9300 給叢集用的暫時沒用到</li> <li>kibana 映射 5601 port; 指定 <code>ELASTICSEARCH_HOSTS=http://myelasticsearch01:9200</code> 提供資料來源</li> <li>logstash 映射 5044 port 供 beat 傳入資料; 9600 port 為外部API用</li> <li>nginx 映射 7414 port; 將 log 持久化至磁碟</li> <li>filebeat 主要提供服務不映射 port 號; <code>filebeat -e -strict.perms=false</code> 以不檢查檔案的方式啟動; 主要取資料的地方會與 nginx 綁定在同一個空間</li> <li>以下服務全部會啟動再同一個 docker network 中</li></ul> <div class="language-YAML extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3.8'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">elasticsearch01</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> docker.elastic.co/elasticsearch/elasticsearch<span class="token punctuation">:</span>7.17.1
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> myelasticsearch01
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;discovery.type=single-node&quot;</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> on<span class="token punctuation">-</span>failure
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 9200<span class="token punctuation">:</span><span class="token number">9200</span>
+      <span class="token punctuation">-</span> 9300<span class="token punctuation">:</span><span class="token number">9300</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> bind
+        <span class="token key atrule">source</span><span class="token punctuation">:</span> ./elasticsearch/config/elasticsearch.yml
+        <span class="token key atrule">target</span><span class="token punctuation">:</span> /usr/share/elasticsearch/config/elasticsearch.yml
+      <span class="token punctuation">-</span> ./elasticsearch/data<span class="token punctuation">:</span>/usr/share/elasticsearch/data
+      <span class="token punctuation">-</span> ./elasticsearch/plugins<span class="token punctuation">:</span>/usr/share/elasticsearch/plugins
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elknetwrok
+
+  <span class="token key atrule">kibana</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> docker.elastic.co/kibana/kibana<span class="token punctuation">:</span>7.17.1
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> mykibana
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;ELASTICSEARCH_HOSTS=http://myelasticsearch01:9200&quot;</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 5601<span class="token punctuation">:</span><span class="token number">5601</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> bind
+          <span class="token key atrule">source</span><span class="token punctuation">:</span> ./kibana/config/kibana.yml
+          <span class="token key atrule">target</span><span class="token punctuation">:</span> /usr/share/kibana/config/kibana.yml
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elknetwrok
+
+  <span class="token key atrule">logstash</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> docker.elastic.co/logstash/logstash<span class="token punctuation">:</span>7.17.1
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> mylogstash
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 5044<span class="token punctuation">:</span><span class="token number">5044</span>
+      <span class="token punctuation">-</span> 9600<span class="token punctuation">:</span><span class="token number">9600</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> bind
+        <span class="token key atrule">source</span><span class="token punctuation">:</span> ./logstash/config/logstash.yml
+        <span class="token key atrule">target</span><span class="token punctuation">:</span> /usr/share/logstash/config/logstash.yml
+      <span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> bind
+        <span class="token key atrule">source</span><span class="token punctuation">:</span> ./logstash/pipeline/logstash.conf
+        <span class="token key atrule">target</span><span class="token punctuation">:</span> /usr/share/logstash/pipeline/logstash.conf
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elknetwrok
+
+  <span class="token key atrule">nginx</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> mynginx
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 7414<span class="token punctuation">:</span><span class="token number">80</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./nginx/log/nginx<span class="token punctuation">:</span>/var/log/nginx
+      <span class="token punctuation">-</span> ./nginx/html<span class="token punctuation">:</span>/usr/share/nginx/html
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elknetwrok
+
+  <span class="token key atrule">filebeat</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> docker.elastic.co/beats/filebeat<span class="token punctuation">:</span>7.17.1
+    <span class="token key atrule">user</span><span class="token punctuation">:</span> root
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> myfilebeat
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> filebeat <span class="token punctuation">-</span>e <span class="token punctuation">-</span>strict.perms=false
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> bind
+        <span class="token key atrule">source</span><span class="token punctuation">:</span> ./filebeat/config/filebeat.yml
+        <span class="token key atrule">target</span><span class="token punctuation">:</span> /usr/share/filebeat/filebeat.yml
+      <span class="token punctuation">-</span> ./nginx/log/nginx<span class="token punctuation">:</span>/var/log/nginx
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elknetwrok
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elasticsearch
+      <span class="token punctuation">-</span> logstash
+      <span class="token punctuation">-</span> kibana
+      <span class="token punctuation">-</span> nginx
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">elknetwrok</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> elknetwrok
+</code></pre></div><p>以 <code>docker-compose up -d</code> 執行YAML檔;執行成功顯示如下:</p> <div class="language-sh extra-class"><pre class="language-sh"><code>C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>mobet<span class="token operator">&gt;</span>docker <span class="token function">ps</span>
+CONTAINER ID   IMAGE                                                  COMMAND                  CREATED       STATUS             PORTS                                            NAMES
+5df7807c57e0   docker.elastic.co/beats/filebeat:7.17.1                <span class="token string">&quot;/usr/bin/tini -- /u…&quot;</span>   <span class="token number">2</span> hours ago   Up <span class="token number">2</span> hours                                                          myfilebeat
+debccbfeb4fe   docker.elastic.co/logstash/logstash:7.17.1             <span class="token string">&quot;/usr/local/bin/dock…&quot;</span>   <span class="token number">2</span> hours ago   Up About an hour   <span class="token number">0.0</span>.0.0:5044-<span class="token operator">&gt;</span><span class="token number">5044</span>/tcp, <span class="token number">0.0</span>.0.0:9600-<span class="token operator">&gt;</span><span class="token number">9600</span>/tcp   mylogstash
+646ef2f0ce45   docker.elastic.co/elasticsearch/elasticsearch:7.17.1   <span class="token string">&quot;/bin/tini -- /usr/l…&quot;</span>   <span class="token number">2</span> hours ago   Up <span class="token number">2</span> hours         <span class="token number">0.0</span>.0.0:9200-<span class="token operator">&gt;</span><span class="token number">9200</span>/tcp, <span class="token number">0.0</span>.0.0:9300-<span class="token operator">&gt;</span><span class="token number">9300</span>/tcp   myelasticsearch01
+0d6d08fd3761   nginx:latest                                           <span class="token string">&quot;/docker-entrypoint.…&quot;</span>   <span class="token number">2</span> hours ago   Up <span class="token number">2</span> hours         <span class="token number">0.0</span>.0.0:7414-<span class="token operator">&gt;</span><span class="token number">80</span>/tcp                             mynginx
+4c101a1f203f   docker.elastic.co/kibana/kibana:7.17.1                 <span class="token string">&quot;/bin/tini -- /usr/l…&quot;</span>   <span class="token number">2</span> hours ago   Up <span class="token number">2</span> hours         <span class="token number">0.0</span>.0.0:5601-<span class="token operator">&gt;</span><span class="token number">5601</span>/tcp                           mykibana
+</code></pre></div><h2 id="重要的-config"><a href="#重要的-config" class="header-anchor">#</a> 重要的 Config</h2> <p>ELK Stack 作為開箱即用的服務有大量的 Config 可以配置，簡單紀錄一下兩個設定比較神秘的 config :</p> <h3 id="filebeat-yml"><a href="#filebeat-yml" class="header-anchor">#</a> filebeat.yml</h3> <p>主要描述 filebeat 該如何採集資料與採集甚麼資料</p> <ul><li>filebeat.modules : filebeat中有許多內置的模組藉由編寫設定便可以輕鬆採集資料這裡使用 NGINX module</li> <li>filebeat.modules.access.var.paths 中的路徑便採集對象所在的資料夾</li> <li>output : 指定 filebeat 採集後的資料要發送到哪邊</li> <li>官方模組列表 <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html" target="_blank" rel="noopener noreferrer">https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>filebeat 是以 GO 語言開發的服務;本身理解其特性較為面向 &quot;client&quot; 端</li></ul> <div class="language-YAML extra-class"><pre class="language-yaml"><code><span class="token comment"># ============================== Filebeat modules ==============================</span>
+
+<span class="token key atrule">filebeat.config</span><span class="token punctuation">:</span>
+  <span class="token key atrule">modules</span><span class="token punctuation">:</span>
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>path.config<span class="token punctuation">}</span>/modules.d/<span class="token important">*.yml</span>
+    <span class="token key atrule">reload.enabled</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+
+<span class="token key atrule">filebeat.modules</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">module</span><span class="token punctuation">:</span> nginx
+  <span class="token key atrule">access</span><span class="token punctuation">:</span>
+    <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">var.paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'/var/log/nginx'</span><span class="token punctuation">]</span>
+  <span class="token key atrule">error</span><span class="token punctuation">:</span>
+    <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">var.paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;/var/log/nginx/error.log&quot;</span><span class="token punctuation">]</span>
+
+<span class="token comment"># ======================= Elasticsearch template setting =======================</span>
+
+<span class="token key atrule">setup.template.settings</span><span class="token punctuation">:</span>
+  <span class="token key atrule">index.number_of_shards</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token comment">#index.codec: best_compression</span>
+  <span class="token comment">#_source.enabled: false</span>
+
+<span class="token comment"># ================================== Outputs ===================================</span>
+
+<span class="token comment"># Configure what output to use when sending the data collected by the beat.</span>
+
+<span class="token comment"># output.elasticsearch:</span>
+<span class="token comment">#   hosts: [&quot;http://myelasticsearch01:9200/&quot;]</span>
+
+<span class="token key atrule">output.logstash</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;mylogstash:5044&quot;</span><span class="token punctuation">]</span>
+
+</code></pre></div><h3 id="logstash-conf"><a href="#logstash-conf" class="header-anchor">#</a> logstash.conf</h3> <p>主要描述想透過 logstash 輸入、過濾、輸出甚麼資料:</p> <ul><li>分為三個區塊分別為 input;filter;output</li> <li>input : 設定資料來源;這裡為接收 beats 傳送過來的資料</li> <li>filter : 針對來源資料做清洗與解析</li> <li>output : 將資料轉送至何處持久化;這裡為轉送至 elasticsearch 並以 mybeat-%{+YYYY.MM.dd} 作為 index 儲存</li> <li>filter 內容來源至官方 NGINX 範例加以改寫; <a href="https://www.elastic.co/guide/en/logstash/7.4/logstash-config-for-filebeat-modules.html#parsing-nginx" target="_blank" rel="noopener noreferrer">範例來源官方連結<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>logstash 是以 JAVA 語言開發的服務;本身理解其特性較為面向 &quot;server&quot; 端</li></ul> <div class="language-TEXT extra-class"><pre class="language-text"><code>input {
+  beats {
+    port =&gt; 5044
+  }
+}
+filter {
+  if [event][module] == &quot;nginx&quot; {
+    if [fileset][name] == &quot;ingress_controller&quot; {
+      grok {
+        match =&gt; { &quot;message&quot; =&gt; [&quot;%{IPORHOST:[nginx][access][remote_ip]} - %{DATA:[nginx][access][user_name]|-} \[%{HTTPDATE:[nginx][access][time]}\] \&quot;%{WORD:[nginx][access][method]} %{DATA:[nginx][access][url]} HTTP/%{NUMBER:[nginx][access][http_version]}\&quot; %{NUMBER:[nginx][access][response_code]} %{NUMBER:[nginx][access][body_sent][bytes]} \&quot;%{DATA:[nginx][access][referrer]}\&quot; \&quot;%{DATA:[nginx][access][agent]}\&quot;&quot;] }
+        remove_field =&gt; &quot;message&quot;
+      }
+      mutate {
+        add_field =&gt; { &quot;read_timestamp&quot; =&gt; &quot;%{@timestamp}&quot; }
+      }
+      date {
+        match =&gt; [ &quot;[nginx][access][time]&quot;, &quot;dd/MMM/YYYY:H:m:s Z&quot; ]
+        remove_field =&gt; &quot;[nginx][access][time]&quot;
+      }
+      useragent {
+        source =&gt; &quot;[nginx][access][agent]&quot;
+        target =&gt; &quot;[nginx][access][user_agent]&quot;
+        remove_field =&gt; &quot;[nginx][access][agent]&quot;
+      }
+      geoip {
+        source =&gt; &quot;[nginx][access][remote_ip]&quot;
+        target =&gt; &quot;[nginx][access][geoip]&quot;
+      }
+    }    
+  }
+}
+output {
+  elasticsearch  {
+    hosts =&gt; &quot;myelasticsearch01:9200&quot;
+    index =&gt; &quot;mybeat-%{+YYYY.MM.dd}&quot;
+  }
+}
+</code></pre></div><h2 id="基本使用"><a href="#基本使用" class="header-anchor">#</a> 基本使用</h2> <h2 id="排雷大隊"><a href="#排雷大隊" class="header-anchor">#</a> 排雷大隊</h2> <ul><li><p>記憶體很重要</p></li> <li><p>docker 中請用 <code>command: filebeat -e -strict.perms=false</code> 啟動filebeat，不要用 entrypoint ; entrypoint 會再幫你啟動一次 beat 一次會丟兩筆資料...一時不察偵錯很久。command 與 entrypoint 的差異一個覆蓋指令;一個是追加指令如果有幸把 docker 的筆記整理過來再附上比較連結</p></li> <li><p>如果 Logstash 出現 <code>Could not index event to Elasticsearch</code> 這個錯誤</p> <div class="language-TEXT extra-class"><pre class="language-text"><code>[2022-06-27T12:28:40,210][ERROR][logstash.outputs.elasticsearch][main][63c7cebabda6b571b9b01c302e26faff25c0e5dc84e5e82df9e9a79abd46f857] Could not index event to Elasticsearch. {:status=&gt;400, :action=&gt;[&quot;index&quot;, {:_id=&gt;nil, :_index=&gt;&quot;%{[Mybeat]}-2022.06.27&quot;, :routing=&gt;nil}, {&quot;fileset&quot;=&gt;{&quot;name&quot;=&gt;&quot;ingress_controller&quot;}, &quot;input&quot;=&gt;{&quot;type&quot;=&gt;&quot;log&quot;}, &quot;event&quot;=&gt;{&quot;timezone&quot;=&gt;&quot;+00:00&quot;, &quot;dataset&quot;=&gt;&quot;nginx.ingress_controller&quot;, &quot;module&quot;=&gt;&quot;nginx&quot;}, &quot;tags&quot;=&gt;[&quot;beats_input_codec_plain_applied&quot;], &quot;host&quot;=&gt;{&quot;hostname&quot;=&gt;&quot;876652f136f8&quot;, &quot;ip&quot;=&gt;[&quot;172.21.0.5&quot;], &quot;mac&quot;=&gt;[&quot;02:42:ac:15:00:05&quot;], &quot;os&quot;=&gt;{&quot;kernel&quot;=&gt;&quot;5.10.16.3-microsoft-standard-WSL2&quot;, &quot;platform&quot;=&gt;&quot;ubuntu&quot;, &quot;family&quot;=&gt;&quot;debian&quot;, &quot;codename&quot;=&gt;&quot;focal&quot;, &quot;version&quot;=&gt;&quot;20.04.3 LTS (Focal Fossa)&quot;, &quot;name&quot;=&gt;&quot;Ubuntu&quot;, &quot;type&quot;=&gt;&quot;linux&quot;}, &quot;name&quot;=&gt;&quot;876652f136f8&quot;, &quot;containerized&quot;=&gt;true, &quot;architecture&quot;=&gt;&quot;x86_64&quot;}, &quot;agent&quot;=&gt;{&quot;ephemeral_id&quot;=&gt;&quot;777ba821-b649-46e2-9ee1-a409193c5545&quot;, &quot;hostname&quot;=&gt;&quot;876652f136f8&quot;, &quot;id&quot;=&gt;&quot;7f7c2a40-d0d9-461e-a9a1-96dced9967fd&quot;, &quot;version&quot;=&gt;&quot;7.17.1&quot;, &quot;name&quot;=&gt;&quot;876652f136f8&quot;, &quot;type&quot;=&gt;&quot;filebeat&quot;}, &quot;ecs&quot;=&gt;{&quot;version&quot;=&gt;&quot;1.12.0&quot;}, &quot;service&quot;=&gt;{&quot;type&quot;=&gt;&quot;nginx&quot;}, &quot;@timestamp&quot;=&gt;2022-06-27T12:28:37.268Z, &quot;message&quot;=&gt;&quot;172.21.0.1 - - [27/Jun/2022:12:28:33 +0000] \&quot;GET /helloworld01.html HTTP/1.1\&quot; 200 21 \&quot;-\&quot; \&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36\&quot; \&quot;-\&quot;&quot;, &quot;@version&quot;=&gt;&quot;1&quot;, &quot;log&quot;=&gt;{&quot;offset&quot;=&gt;1204, &quot;file&quot;=&gt;{&quot;path&quot;=&gt;&quot;/var/log/nginx/access.log&quot;}}}], :response=&gt;{&quot;index&quot;=&gt;{&quot;_index&quot;=&gt;&quot;%{[Mybeat]}-2022.06.27&quot;, &quot;_type&quot;=&gt;&quot;_doc&quot;, &quot;_id&quot;=&gt;nil, &quot;status&quot;=&gt;400, &quot;error&quot;=&gt;{&quot;type&quot;=&gt;&quot;invalid_index_name_exception&quot;, &quot;reason&quot;=&gt;&quot;Invalid index name [%{[Mybeat]}-2022.06.27], must be lowercase&quot;, &quot;index_uuid&quot;=&gt;&quot;_na_&quot;, &quot;index&quot;=&gt;&quot;%{[Mybeat]}-2022.06.27&quot;}}}}
+</code></pre></div><p>看一下 Reason 通常會提示你 <code>Invalid index name [%{[Mybeat]}-2022.06.27], must be lowercase&quot;</code> 這邊就是說 Index 不能是大寫...</p></li> <li><p>出現 config file (&quot;filebeat.yml&quot;) can only be writable</p> <div class="language-TEXT extra-class"><pre class="language-text"><code>config file (&quot;filebeat.yml&quot;) can only be writable by the owner but the permissions are &quot;-rwxrwxrwx&quot; (to fix the permissions use: 'chmod go-w /usr/share/filebeat/filebeat.yml')
+</code></pre></div><p>先讓 <code>filebeat -e -strict.perms=false</code></p></li> <li><p><code>filebeat -h</code> 這個指令很好用...</p></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/BookELK/Elasticstack01/buildenvironmet.html" class="prev">
+        Elastic stack 環境建置
+      </a></span> <span class="next"><a href="/BookELK/Elasticsearch01/01_Introduction.html">
+        基本
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/BookELK/assets/js/app.9654e8fe.js" defer></script><script src="/BookELK/assets/js/2.2ceb4bd3.js" defer></script><script src="/BookELK/assets/js/13.b84c4365.js" defer></script>
+  </body>
+</html>
