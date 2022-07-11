@@ -39,6 +39,8 @@ Thank you!
 * 環境
   - [X] 初階 Elasticsearch With Docker
   - [X] 初階 Elasticsearch With DockerCompose
+* DEMO
+  - [ ] 以 Elasticsearch 為基礎的 Discord bot 語意機器人
 * 日誌相關
   - [X] Filebeat NGINX
   - [ ] Filebeat IIS
