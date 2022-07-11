@@ -57,7 +57,7 @@ Thank you!
     - [ ] Full Text Query
     - [ ] Term Query
 * Logstash
-  - [ ] Load CSV File into Elasticsearch
+  - [X] Load CSV File into Elasticsearch
 * ~~Elasticsearch Demo I~~ (故宮API請不下來是怎樣==)
   - [ ] ~~申請故宮 Open data~~
   - [ ] ~~抓取資料~~

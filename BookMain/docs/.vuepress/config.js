@@ -45,8 +45,9 @@ module.exports = {
                   {
                     title: 'Logstash',
                     collapsable: true,
+                    sidebarDepth: 2,
                     children: [
-                      ['/Logstash01/02_ImportCSV', 'CSV 匯入'],
+                      ['/Logstash01/02_ImportCSV', 'Load csv'],
                     ]
                   },
                   {
