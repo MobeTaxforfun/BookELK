@@ -47,12 +47,19 @@ module.exports = {
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                      ['/Logstash01/02_ImportCSV', 'Load csv'],
+                      ['/Logstash01/02_Filter_csv', 'Filter csv'],
                     ]
                   },
                   {
                     title: 'Filebeat ',
-                    collapsable: true
+                    collapsable: true,
+                    children: [
+                      ['/Beat01/01_Filebeat_IIS', 'Filebeat IIS'],
+                      ['/Beat01/01_Filebeat_NGINX', 'Filebeat NGINX'],
+                      ['/Beat01/01_Heartbeat', 'Heartbeat'],
+                      ['/Beat01/01_Metricbeat_System_Win', 'Metricbeat system(windows)'],
+                      ['/Beat01/01_Winlogbeat', 'Winlogbeat'],
+                    ]
                   }
                   //,
                   // {
