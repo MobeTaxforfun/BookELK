@@ -51,7 +51,7 @@ module.exports = {
                     ]
                   },
                   {
-                    title: 'Filebeat ',
+                    title: 'Beats',
                     collapsable: true,
                     children: [
                       ['/Beat01/01_Filebeat_IIS', 'Filebeat IIS'],
