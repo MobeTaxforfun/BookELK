@@ -53,6 +53,7 @@ Thank you!
     - [X] 集成 .net core 開發對答服務
   - [ ] 比較 2000 萬筆資料下 SQL 與 Elasticsearch 的搜尋速度
     - [X]  SQL 資料建置
+      - [ ] 產生假資料
     - [ ]  Elasticsearch 資料建置
     - [ ]  設計比較實驗
 * Elasticsearch

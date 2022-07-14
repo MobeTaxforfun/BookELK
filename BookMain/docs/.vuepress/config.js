@@ -54,6 +54,7 @@ module.exports = {
                     title: 'Beats',
                     collapsable: true,
                     children: [
+                      ['/Beat01/01_BeatsIntro', 'Beats Introduction'],
                       ['/Beat01/01_Filebeat_IIS', 'Filebeat IIS'],
                       ['/Beat01/01_Filebeat_NGINX', 'Filebeat NGINX'],
                       ['/Beat01/01_Heartbeat', 'Heartbeat'],
