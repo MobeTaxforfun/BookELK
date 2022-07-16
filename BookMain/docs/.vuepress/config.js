@@ -11,31 +11,27 @@ module.exports = {
                     title: 'Elastic stack',
                     collapsable: true,
                     children: [
-                      ['/Elasticstack01/buildenvironmet', 'Elastic stack 環境建置'],
-                      ['/Elasticstack01/buildenvwithdockercompose', 'Elastic stack 環境建置(docker compose)'],
+                      ['/Elasticstack/buildenvironmet', 'Elastic stack 環境建置'],
+                      ['/Elasticstack/buildenvwithdockercompose', 'Elastic stack 環境建置(docker compose)'],
                     ]
-                  },
-                  {
-                    title: 'Elastic Stack Demo',
-                    collapsable: true
                   },
                   {
                     title: 'Elasticsearch',
                     collapsable: true,
                     sidebarDepth: 2, 
                     children: [
-                      ['/Elasticsearch01/01_Introduction', '基本'],
-                      ['/Elasticsearch01/01_Template',     '測試資料'],
-                      ['/Elasticsearch01/02_Index',        'Index'],
-                      ['/Elasticsearch01/02_Document',     'Document'],
-                      ['/Elasticsearch01/02_Mapping',      'Mapping'],
-                      ['/Elasticsearch01/02_Aliases',      'Index Aliases'],
-                      ['/Elasticsearch01/02_Analyzer',     'Analyzer'],
-                      ['/Elasticsearch01/02_AnalyzerCh',   'Analyzer 中文分詞'],
-                      ['/Elasticsearch01/02_SearchAPI',    'Search API'],
-                      ['/Elasticsearch01/02_Query',        'Query DSL'],
-                      ['/Elasticsearch01/02_Aggregations', 'Aggregations'],
-                      ['/Elasticsearch01/03_Cat',          'cat']
+                      ['/Elasticsearch/01_Introduction', '基本'],
+                      ['/Elasticsearch/01_Template',     '測試資料'],
+                      ['/Elasticsearch/02_Index',        'Index'],
+                      ['/Elasticsearch/02_Document',     'Document'],
+                      ['/Elasticsearch/02_Mapping',      'Mapping'],
+                      ['/Elasticsearch/02_Aliases',      'Index Aliases'],
+                      ['/Elasticsearch/02_Analyzer',     'Analyzer'],
+                      ['/Elasticsearch/02_AnalyzerCh',   'Analyzer 中文分詞'],
+                      ['/Elasticsearch/02_SearchAPI',    'Search API'],
+                      ['/Elasticsearch/02_Query',        'Query DSL'],
+                      ['/Elasticsearch/02_Aggregations', 'Aggregations'],
+                      ['/Elasticsearch/03_Cat',          'cat']
                     ]
                   },
                   {
@@ -47,19 +43,26 @@ module.exports = {
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
-                      ['/Logstash01/02_Filter_csv', 'Filter csv'],
+                      ['/Logstash/02_Filter_csv', 'Filter csv'],
                     ]
                   },
                   {
                     title: 'Beats',
                     collapsable: true,
                     children: [
-                      ['/Beat01/01_BeatsIntro', 'Beats Introduction'],
-                      ['/Beat01/01_Filebeat_IIS', 'Filebeat IIS'],
-                      ['/Beat01/01_Filebeat_NGINX', 'Filebeat NGINX'],
-                      ['/Beat01/01_Heartbeat', 'Heartbeat'],
-                      ['/Beat01/01_Metricbeat_System_Win', 'Metricbeat system(windows)'],
-                      ['/Beat01/01_Winlogbeat', 'Winlogbeat'],
+                      ['/Beats/BeatsIntro', 'Beats Introduction'],
+                      ['/Beats/01_Filebeat_IIS', 'Filebeat IIS'],
+                      ['/Beats/01_Filebeat_NGINX', 'Filebeat NGINX'],
+                      ['/Beats/01_Heartbeat', 'Heartbeat'],
+                      ['/Beats/01_Metricbeat_System_Win', 'Metricbeat system(windows)'],
+                      ['/Beats/01_Winlogbeat', 'Winlogbeat'],
+                    ]
+                  },
+                  {
+                    title: 'Demo',
+                    collapsable: true,
+                    children: [
+                      ['/Example/DiscordGossip','Discord bot']
                     ]
                   }
                   //,
