@@ -31,3 +31,18 @@ PUT gossiping-v1
     }
 }
 ```
+
+```JSON
+POST gossiping-*/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"match": {
+          "answer": "GIS"
+        }}
+      ]
+    }
+  }
+}
+```
