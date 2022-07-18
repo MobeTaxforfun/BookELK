@@ -313,3 +313,5 @@
 ## Update by query
 
 透過指定的 query 來更新文件
+
+`For example, text fields are stored in inverted indices, and numeric and geo fields are stored in BKD trees`

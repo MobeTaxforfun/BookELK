@@ -8,14 +8,6 @@ module.exports = {
             '/':{
                 sidebar: [
                   {
-                    title: 'Elastic stack',
-                    collapsable: true,
-                    children: [
-                      ['/Elasticstack/buildenvironmet', 'Elastic stack 環境建置'],
-                      ['/Elasticstack/buildenvwithdockercompose', 'Elastic stack 環境建置(docker compose)'],
-                    ]
-                  },
-                  {
                     title: 'Elasticsearch',
                     collapsable: true,
                     sidebarDepth: 2, 
@@ -63,6 +55,14 @@ module.exports = {
                     collapsable: true,
                     children: [
                       ['/Example/DiscordGossip','Discord bot']
+                    ]
+                  },
+                  {
+                    title: 'Elastic stack',
+                    collapsable: true,
+                    children: [
+                      ['/Elasticstack/buildenvironmet', 'Elastic stack 環境建置'],
+                      ['/Elasticstack/buildenvwithdockercompose', 'Elastic stack 環境建置(docker compose)'],
                     ]
                   }
                   //,

@@ -15,12 +15,12 @@
 
 :blue_book: 章節概述
 
-* Elastic stack : 總體ELK環境建置
-* Elastic Stack Demo : 存放一些小 Demo 的地方
 * Elasticsearch : Elasticsearch 相關使用心得
 * kibana : Kibana 相關使用心得
 * Logstash : Logstash 相關使用心得
 * Filebeat : Filebeat 相關使用心得
+* Elastic stack : 總體ELK環境建置
+* Demo : 存放一些小 Demo 的地方
 
 :wrench: 相關建議
 

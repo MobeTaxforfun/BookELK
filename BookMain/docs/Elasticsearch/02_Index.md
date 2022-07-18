@@ -1,13 +1,17 @@
 # Elasticsearch Index
 
-簡單過一下索引的API，看教學的時候才不會慌張
+在 Elasticsearch 中一切皆以索引為主，索引的觀念務必要掌握確實，簡單過一下索引的API，看教學的時候才不會慌張
+> An index can be thought of as an optimized collection of documents and each document is a collection of fields, which are the key-value pairs that contain your data. By default, Elasticsearch indexes all data in every field and each indexed field has a dedicated, optimized data structure. For example, text fields are stored in inverted indices, and numeric and geo fields are stored in BKD trees. The ability to use the per-field data structures to assemble and return search results is what makes Elasticsearch so fast.
 
-## Index APIs
+:blue_book: Reference
 
-今天的我看官方文件了嗎?請加油好嗎 文件走這裡
-[https://www.elastic.co/guide/en/elasticsearch/reference/7.17/indices.html](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/indices.html)
+* 官方文件；[走這裡](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/indices.html)
 
-### Create index API
+## Index
+
+&nbsp;&nbsp;在 Elasticsearch 中 `Index` 為多個 Document 的集合，而 `Document` 又是多個 `fields` 的集合，每個索引都可有自己的 `mapping`，mapping 會決定 `Document` 中每個 `fields` 的名稱與類型；在 ES 中 `index` 也可以分布在不同的 `Shard` 上，來達到儲存空間的水平擴展
+
+## Create index API
 
 * 創建索引
 
@@ -67,7 +71,7 @@
   * Cannot be . or ..
   * Cannot be longer than 255 bytes (note it is bytes, so multi-byte characters will count towards the 255 limit faster)(涉及底層設計不能超過 255 bytes)
 
-### Delete index API
+## Delete index API
 
 * 刪除索引
 
@@ -89,7 +93,7 @@
     }
     ```
 
-### Get index API
+## Get index API
 
 * 檢視某個索引
   
@@ -129,7 +133,7 @@
     }
     ```
 
-### Listed indices
+## Listed indices
 
 * 列出索引
   
@@ -148,6 +152,6 @@
         green  open .tasks                          kh3_uU9iQJmofYrXL7DslQ 1 0 16    0  55.7kb  55.7kb
     ```
 
-### Rename Index
+## Rename Index
 
 基本上滿麻煩的先使用 Clone Index API 再把原來的 Delete Index API
