@@ -9,7 +9,11 @@
 
 ## Index
 
-&nbsp;&nbsp;在 Elasticsearch 中 `Index` 為多個 Document 的集合，而 `Document` 又是多個 `fields` 的集合，每個索引都可有自己的 `mapping`，mapping 會決定 `Document` 中每個 `fields` 的名稱與類型；在 ES 中 `index` 也可以分布在不同的 `Shard` 上，來達到儲存空間的水平擴展
+在 Elasticsearch 中 `Index` 為多個 Document 的集合，而 `Document` 又是多個 `fields` 的集合，  
+每個索引都可有自己的 `mapping`，mapping 會決定 `Document` 中每個 `fields` 的名稱與類型；  
+在 ES 中 `index` 也可以分布在不同的 `Shard` 上，來達到儲存空間的水平擴展，以系統架構的角度可以這樣看:  
+&nbsp;  
+![Index Architecture](../.vuepress/public/chapter2/Index/indexArchitechture.png)
 
 ## Create index API
 
