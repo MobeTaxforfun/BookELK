@@ -12,8 +12,8 @@ module.exports = {
                     collapsable: true,
                     sidebarDepth: 2, 
                     children: [
-                      ['/Elasticsearch/01_Introduction', '基本'],
-                      ['/Elasticsearch/01_Template',     '測試資料'],
+                      ['/Elasticsearch/01_Introduction', 'ELK Stack Intro'],
+                      // ['/Elasticsearch/01_Template',     '測試資料'],
                       ['/Elasticsearch/02_Index',        'Index'],
                       ['/Elasticsearch/02_Document',     'Document'],
                       ['/Elasticsearch/02_Mapping',      'Mapping'],
@@ -23,7 +23,7 @@ module.exports = {
                       ['/Elasticsearch/02_SearchAPI',    'Search API'],
                       ['/Elasticsearch/02_Query',        'Query DSL'],
                       ['/Elasticsearch/02_Aggregations', 'Aggregations'],
-                      ['/Elasticsearch/03_Cat',          'cat']
+                      ['/Elasticsearch/03_Cat',          'Cat']
                     ]
                   },
                   {
