@@ -1,6 +1,9 @@
 module.exports = {
     title:'我的 Elastic Stack 筆記',
     description:'已經到了不記下來就會忘記的年紀了，紀錄一下自身學習 Elasticsearch;Logstash;Kibana;Beats 的一些歷程',
+    head: [
+      // ['link', { rel: 'shortcut icon', type: "image/x-icon", href: ""}]
+    ],
     base: '/BookELK/',
     // theme: "book",
     themeConfig: {
@@ -13,6 +16,7 @@ module.exports = {
                     sidebarDepth: 2, 
                     children: [
                       ['/Elasticsearch/01_Introduction', 'ELK Stack Intro'],
+                      ['/Elasticsearch/01_Elasticsearch', 'Elasticsearch Intro'],
                       // ['/Elasticsearch/01_Template',     '測試資料'],
                       ['/Elasticsearch/02_Index',        'Index'],
                       ['/Elasticsearch/02_Document',     'Document'],
