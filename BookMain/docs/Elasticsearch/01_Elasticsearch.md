@@ -49,7 +49,23 @@ ELasticsearch 核心要素有三個:
 ## RDBMS vs. Elasticsearch
 
 要瞭解 Elasticsearch 可以先用 RDBMS 的概念來對比會比較好理解，但必須  
-<font color="#FF0000" size="4">注意只是拿使用概念來類比，並非 Elasticsearch 本身設計是依 RDBMS 的邏輯開發，兩者在本質上是天差地別</font>
+<font color="#FF0000" size="4">注意只是拿使用概念來類比，並非 Elasticsearch 本身設計是依 RDBMS 的邏輯開發，兩者在本質上是天差地別</font>  
+以下是以 RDBMS 的方式理解 Elasticsearch :  
+&nbsp;  
+:notebook:&nbsp;&nbsp;Type 這個概念已經在新版本中移除，  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而在 Type 7.x 版本中已經被定義為預設的 _doc，  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因為在 Elasticsearch 中一切皆是索引，不需要再額外劃分一層 Type 來分類，於是被當成過度設計而棄用  
+&nbsp;  
+|Elasticsearch|RDBMS|
+|----|----|
+|Index|Database|
+|~~Table~~|~~Type~~|
+|Row|Document|
+|Column|Fields|
+|Schema|Mapping|
+|SQL|Query DSL|
+&nbsp;  
+
 
 ## Index
 
