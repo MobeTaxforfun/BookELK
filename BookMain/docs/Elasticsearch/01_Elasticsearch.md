@@ -10,6 +10,7 @@
 :blue_book: **Reference**
 
 * [官網](https://www.elastic.co/elasticsearch/)
+* [What is an Elasticsearch Index?(2013)](https://www.elastic.co/blog/what-is-an-elasticsearch-index)
 
 ## More About ELasticsearch
 
@@ -19,9 +20,9 @@ ELasticsearch 想解決的核心問題就是在數據量大的狀況下也能保
 當初作者 Shay Banon 在設計的時候，一開始就是朝向分布式部屬的面相開發 ELasticsearch  
 ELasticsearch 核心要素有三個:
 
-* Data in : documents and indices
-* Information out : search and analyze
-* Scalability and resilience
+* <font color="#63C5DA" size="4">**Data in : documents and indices**</font>
+* <font color="#63C5DA" size="4">**Information out : search and analyze**</font>
+* <font color="#63C5DA" size="4">**Scalability and resilience**</font>
 
 &nbsp;
 
@@ -85,6 +86,13 @@ ELasticsearch 核心要素有三個:
 
   ![ESflow](../.vuepress/public/chapter2/elasticsearch/ESflow.png)
 
+最後來看一下官方部落格上面的論述(2013年，所有還有Type的概念)
+
+> The easiest and most familiar layout clones what you would expect from a relational database.  
+> You can (very roughly) think of an index like a database.  
+> ● MySQL => Databases => Tables => Columns/Rows  
+> ● Elasticsearch => Indices => Types => Documents with Properties  
+
 Elasticsearch 一詞拆開來看就是 Elastic + Search，  
 Elastic 有靈活的意思；Search 則是搜尋，  
 為了讓使用者能靈活搜尋，Elasticsearch 在一些格式定義上相對靈活，  
@@ -99,6 +107,25 @@ Elastic 有靈活的意思；Search 則是搜尋，
 RDBMS 負責插入與更新資料，再把資料同步到 Elasticsearch 進行搜索。
 
 ## Index
+
+Index (索引)為 Elasticsearch 的核心概念之一，  
+核心三要之一便是 `Data in : documents and indices`，  
+當資料往 Elasticsearch 輸入時，兩個關鍵便是 **documents** and **indices**，  
+若是說<font color="#FF0000">搜尋引擎為 Elasticsearch 的核心概念，Index 就是支撐這個核心概念的基石</font>，  
+若要在 ELK Stack 相關應用上有良好的使用體驗，務必要掌握一下 Index
+自身的心得是 Elasticsearch Index 這個東西"極端神秘"
+
+* 索引為文件的集合，簡單來說就是把同類型的 documents 藉由 Index 集合再一起，  
+  當然索引的設計牽涉到整體搜尋的速度，假設把系統中所有的 documents 都用一個 Index 存起來  
+  想當然爾...
+* 而一個 Elasticsearch Index 又會分布在一個或多個 Shard 中，而每一個 Shard 又會有自身的 Lucene Index
+* Inverted Index
+
+~~這小節有點難寫.. 先擱置一下~~
+
+### Inverted Index
+
+反向索引或稱倒排索引
 
 ## Document
 
