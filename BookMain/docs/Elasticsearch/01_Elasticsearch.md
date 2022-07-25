@@ -1,6 +1,6 @@
 # ELasticsearch
 
-:closed_book: **chapter objectives**  
+:closed_book: **Chapter Objectives**  
 
 * ELasticsearch 更多基礎知識
 * 如同進行正規球賽前要先熟悉規則，使用 ELasticsearch 前基本相關名詞也需要略知一二
@@ -56,9 +56,9 @@ ELasticsearch 核心要素有三個:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而在 Type 7.x 版本中已經被定義為預設的 _doc，  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因為在 Elasticsearch 中一切皆是索引，不需要再額外劃分一層 Type 來分類，於是被當成過度設計而棄用  
 &nbsp;  
-|Elasticsearch|RDBMS|
+|RDBMS&emsp;&emsp;&emsp;&emsp;|Elasticsearch&emsp;&emsp;|
 |----|----|
-|Index|Database|
+|Database|Index|
 |~~Table~~|~~Type~~|
 |Row|Document|
 |Column|Fields|
@@ -66,6 +66,37 @@ ELasticsearch 核心要素有三個:
 |SQL|Query DSL|
 &nbsp;  
 
+用最簡單的方式，建立"儲存資料的容器"到"將資料儲存到實體位置"的實用角度上來切入 :
+
+* RDBMS
+
+  * 建資料庫
+  * 建資料表
+  * 設計欄位
+  * 插入資料  
+
+  ![RDBMSflow](../.vuepress/public/chapter2/elasticsearch/RDBMSflow.png)
+
+* Elasticsearch
+
+  * 建立索引 (Index)
+  * 設計映射 (Mapping)，此步驟也不一定要有
+  * 插入文件 (Document)
+
+  ![ESflow](../.vuepress/public/chapter2/elasticsearch/ESflow.png)
+
+Elasticsearch 一詞拆開來看就是 Elastic + Search，  
+Elastic 有靈活的意思；Search 則是搜尋，  
+為了讓使用者能靈活搜尋，Elasticsearch 在一些格式定義上相對靈活，  
+不過要百分之百發揮 Elasticsearch 的搜尋速度還是建議將 "需搜尋的欄位" 的定義給確定下來  
+不然官方就不會有文件是專門闡述 Mapping 這個部份了  
+&nbsp;  
+另一個 Elasticsearch 與 RDBMS 的巨大差異就是 <font color="#FF0000">Elasticsearch 不具備 Transaction 的概念</font>，  
+但單個請求下是保有 ACID 特性，雖然講起來好像有點矛盾!?  
+不過實際使用過 Elasticsearch API 之後，就會有比較深刻的了解 (前提是必須了解RDBMS ACID And Transaction)  
+&nbsp;  
+所以在真實的應用場景下 Elasticsearch 不會取代 RDBMS，反而是兩者併行相輔相成，  
+RDBMS 負責插入與更新資料，再把資料同步到 Elasticsearch 進行搜索。
 
 ## Index
 
