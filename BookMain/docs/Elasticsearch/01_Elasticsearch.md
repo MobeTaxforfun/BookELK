@@ -112,7 +112,7 @@ Index (索引)為 Elasticsearch 的核心概念之一，
 核心三要之一便是 `Data in : documents and indices`，  
 當資料往 Elasticsearch 輸入時，兩個關鍵便是 **documents** and **indices**，  
 若是說<font color="#FF0000">搜尋引擎為 Elasticsearch 的核心概念，Index 就是支撐這個核心概念的基石</font>，  
-若要在 ELK Stack 相關應用上有良好的使用體驗，務必要掌握一下 Index
+若要在 ELK Stack 相關應用上有良好的使用體驗，務必要掌握一下 Index，  
 自身的心得是 Elasticsearch Index 這個東西"極端神秘"
 
 * 索引為文件的集合，簡單來說就是把同類型的 documents 藉由 Index 集合再一起，  
@@ -125,31 +125,58 @@ Index (索引)為 Elasticsearch 的核心概念之一，
 
 ### Inverted Index
 
-:earth_africa: From www.elastic.co
+:earth_africa: <font color="#63C5DA" size="4">**www.elastic.co**</font>
 
 > Elasticsearch uses a data structure called an inverted index that supports very fast full-text searches.  
 
-:earth_africa: Wikipedia
+:earth_africa: <font color="#63C5DA" size="4">**Wikipedia**</font>
 
 > 倒排索引（英語：Inverted index），也常被稱為反向索引、置入檔案或反向檔案，  
 > 是一種索引方法，被用來儲存在全文搜尋下某個單詞在一個文件或者一組文件中的儲存位置的對映。  
 > 它是文件檢索系統中最常用的資料結構。  
 
 &nbsp;
-<font color="#63C5DA" size="4">**Elasticsearch 使用 Inverted Index 的資料結構來實現快速的全文搜尋**</font>，  
+<font color="#FF0000">**Elasticsearch 使用 Inverted Index 的資料結構來實現快速的全文搜尋**</font>，  
 關於反向索引或稱倒排索引已經是老生常談了(Google一下就一堆)，  
 簡單的記錄一下  
 
-![invertedindexexample](../.vuepress/public/chapter2/elasticsearch/Intro/InvertedIndexExample.png)
+![invertedindexexample](../.vuepress/public/chapter2/elasticsearch/InvertedIndexExample.png)
+
+* <font color="#63C5DA" size="4">**簡略的轉置流程**</font>  
+
+ 若要建立 Inverted Index，首先所有的 Document 會先經過分詞、分析、停用詞、字元轉換後，  
+ 割成一個一個最小的單詞，再由這些單詞集合成 Inverted Index，  
+ ※所以當我們搜尋 `what` 的時候，我們可以知道 `what` 這個關鍵字在文件ID為 `0,1` 這兩個文件中，便不用在每個文件尋訪，  
+ 以 Wiki 的三句文字為例子，流程如下圖:  
+ &nbsp;  
+ ![invertedindexflow](../.vuepress/public/chapter2/elasticsearch/Invertedindexflow.png)  
+ &nbsp;  
+
+ 若以 Forward Index (索引) vs. Invert Index (反向索引) 來切入，  
+ Invert Index 資料結構是典型的搜尋引擎檢索演算法重要的部分，  
+ 事實上正因為 Invert Index 的特性，Invert Index 也是文件檢索系統中最常用的資料結構，  
+ Forward Index vs. Invert Index 兩者比較如下圖:  
+ &nbsp;  
+ ![forwardvsinvertedindex](../.vuepress/public/chapter2/elasticsearch/forwardvsinvertedindex.png)  
+ &nbsp;  
+
+### Elasticsearch Inverted Index
+
+更深入的來探討 Elasticsearch 對於 Inverted Index 的實現  
+~~這個要整理很久，先把大綱打好~~(未完待續)  
 
 ## Document
 
-## Field
+### Field
 
-## Mapping
+### Mapping
 
-## Cluster
+## Search
 
-## Shard
+## Analyzer
 
-## Replica
+## Distributed Document Store
+
+### Shard
+
+### Replica
