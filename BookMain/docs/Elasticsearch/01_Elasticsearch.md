@@ -160,7 +160,7 @@ Index (索引)為 Elasticsearch 的核心概念之一，
  ![forwardvsinvertedindex](../.vuepress/public/chapter2/elasticsearch/forwardvsinvertedindex.png)  
  &nbsp;  
 
-### Elasticsearch Inverted Index
+### Inverted Index For Elasticsearch
 
 更深入的來探討 Elasticsearch 對於 Inverted Index 的實現  
 ~~這個要整理很久，先把大綱打好~~(未完待續)  
