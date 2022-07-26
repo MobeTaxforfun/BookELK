@@ -167,9 +167,57 @@ Index (索引)為 Elasticsearch 的核心概念之一，
 
 ## Document
 
-### Field
+> Elasticsearch is a distributed document store.  
+> Instead of storing information as rows of columnar data,  
+> Elasticsearch stores complex data structures that have been serialized as JSON documents.  
+
+* <font color="#63C5DA" size="4">**重點 =>**</font> `Elasticsearch is a distributed document store`  
+  **Elasticsearch 是一個<font color="#FF0000">分布式</font>的<font color="#FF0000">文件資料庫</font>**  
+  **Elasticsearch 是一個<font color="#FF0000">分布式</font>的<font color="#FF0000">文件資料庫</font>**  
+  **Elasticsearch 是一個<font color="#FF0000">分布式</font>的<font color="#FF0000">文件資料庫</font>**  
+
+* <font color="#63C5DA" size="4">**Index 與 Documents 的關係**</font>  
+  最 <font color="008000">**簡單**</font> 來說就是一個 Index 裡面，會有很多同屬性的 Documents  
+  (當然實際場景下遠比這個複雜得多，還有 Node; Shard; 那些有的沒的)  
+  &nbsp;  
+  ![IndexandDocument](../.vuepress/public/chapter2/elasticsearch/IndexandDocument.png)  
+
+* <font color="#63C5DA" size="4">**數據最小單位**</font>
+
+  Document 已經是 Elasticsearch 儲存資料單元中最小的單位了
+
+* <font color="#63C5DA" size="4">**JSON Documents**</font>
+
+  > Elasticsearch stores complex data structures that have been serialized as JSON documents
+
+  儲存進 Elasticsearch 的資料都將被序列化為 JSON documents，  
+  所以 documents 通常以 JSON 來表示，  
+  事實上，再使用 Elasticsearch 時也都透過 HTTP 與 JSON 來與 Elasticsearch 溝通居多
+
+* <font color="#63C5DA" size="4">**Unique Id**</font>
+  
+  每個 Document 接有自己的唯一 ID，  
+  不管是在建立的時候使用者賦予，或是由系統自身配給，  
+  通常讓系統本身管理會是比較明智的選擇
+
+* <font color="#63C5DA" size="4">**Schema-less**</font>
+
+  >Elasticsearch also has the ability to be schema-less
+  
+* :notebook: 關於 NoSQL 知識補充
+  
+  Elasticsearch 屬於文件型資料庫，  
+  Google `NoSQL` 拉到文件儲存列表就會看到了，  
+  目前對於 NoSQL 分類的主流說法，大體分成四個:  
+  * 文件型資料庫
+  * Key-value 鍵值對資料庫
+  * 圖資料庫
+  * 列資料庫
+
 
 ### Mapping
+
+### Field
 
 ## Search
 
