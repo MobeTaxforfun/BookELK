@@ -125,7 +125,22 @@ Index (索引)為 Elasticsearch 的核心概念之一，
 
 ### Inverted Index
 
-反向索引或稱倒排索引
+:earth_africa: From www.elastic.co
+
+> Elasticsearch uses a data structure called an inverted index that supports very fast full-text searches.  
+
+:earth_africa: Wikipedia
+
+> 倒排索引（英語：Inverted index），也常被稱為反向索引、置入檔案或反向檔案，  
+> 是一種索引方法，被用來儲存在全文搜尋下某個單詞在一個文件或者一組文件中的儲存位置的對映。  
+> 它是文件檢索系統中最常用的資料結構。  
+
+&nbsp;
+<font color="#63C5DA" size="4">**Elasticsearch 使用 Inverted Index 的資料結構來實現快速的全文搜尋**</font>，  
+關於反向索引或稱倒排索引已經是老生常談了(Google一下就一堆)，  
+簡單的記錄一下  
+
+![invertedindexexample](../.vuepress/public/chapter2/elasticsearch/Intro/InvertedIndexExample.png)
 
 ## Document
 
