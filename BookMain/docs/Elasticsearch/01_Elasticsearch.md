@@ -26,7 +26,7 @@ ELasticsearch 核心要素有三個:
 
 &nbsp;
 
-* :notebook: 關於系統設計知識補充
+* :notebook: <font color="008000">**關於系統設計知識補充**</font>
 
   * 分散式系統設計準則 CAP
     * Consistency (一致性)
@@ -53,9 +53,12 @@ ELasticsearch 核心要素有三個:
 <font color="#FF0000" size="4">注意只是拿使用概念來類比，並非 Elasticsearch 本身設計是依 RDBMS 的邏輯開發，兩者在本質上是天差地別</font>  
 以下是以 RDBMS 的方式理解 Elasticsearch :  
 &nbsp;  
-:notebook:&nbsp;&nbsp;Type 這個概念已經在新版本中移除，  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而在 Type 7.x 版本中已經被定義為預設的 _doc，  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因為在 Elasticsearch 中一切皆是索引，不需要再額外劃分一層 Type 來分類，於是被當成過度設計而棄用  
+
+* :notebook: <font color="008000">**Type補充**</font>
+
+&nbsp;&nbsp;&nbsp;&nbsp;Type 這個概念已經在新版本 8.x 中移除，  
+&nbsp;&nbsp;&nbsp;&nbsp;而在 7.x 版本中 Type 已經被定義為預設的 _doc，  
+&nbsp;&nbsp;&nbsp;&nbsp;因為在 Elasticsearch 中一切皆是索引，不需要再額外劃分一層 Type 來分類，於是被當成過度設計而<font color="#FF0000" size="4">棄用</font>  
 &nbsp;  
 |RDBMS&emsp;&emsp;&emsp;&emsp;|Elasticsearch&emsp;&emsp;|
 |----|----|
@@ -177,7 +180,7 @@ Index (索引)為 Elasticsearch 的核心概念之一，
   **Elasticsearch 是一個<font color="#FF0000">分布式</font>的<font color="#FF0000">文件資料庫</font>**  
 
 * <font color="#63C5DA" size="4">**Index 與 Documents 的關係**</font>  
-  最 <font color="008000">**簡單**</font> 來說就是一個 Index 裡面，會有很多同屬性的 Documents  
+  最 <font color="FF4500">**簡單**</font> 來說就是一個 Index 裡面，會有很多同屬性的 Documents  
   (當然實際場景下遠比這個複雜得多，還有 Node; Shard; 那些有的沒的)  
   &nbsp;  
   ![IndexandDocument](../.vuepress/public/chapter2/elasticsearch/IndexandDocument.png)  
@@ -204,7 +207,31 @@ Index (索引)為 Elasticsearch 的核心概念之一，
 
   >Elasticsearch also has the ability to be schema-less
   
-* :notebook: 關於 NoSQL 知識補充
+  Schema-less 為一種彈性的儲存結構，並不僅限存在於 Elasticsearch 中，  
+  MongoDB ...等等的資料庫，也是具備 Schema-less 屬性，  
+  Schema-less 提供了什麼特性?  
+
+  > which means that documents can be indexed without explicitly specifying how to handle each of the different fields that might occur in a document.  
+
+  在存儲資料時不需要事先定義美個文件中的格式(fields)便可將文件儲存，  
+  Elasticsearch 中提供 <font color="FF4500">Dynamic mapping</font> 的機制，  
+  在文件進到 Elasticsearch Index 時會自動的判別 fields 並把 fields 添加進 Index 中，  
+
+  > ​just start indexing documents and Elasticsearch will detect and map booleans,  
+  > floating point and integer values, dates, and strings to the appropriate Elasticsearch data types.
+
+  使用者僅需要往索引中間添加文件，Elasticsearch 會自動幫你判別型態，  
+  需要注意的是 Dynamic mapping 也不是如此的完美，  
+  所以有時候還是需要使用者自己定義
+
+* :notebook: <font color="008000">**Schema-less 知識補充**</font>
+
+  Schema-less 雖然看似方便其實還是有些問題存在 1. 需要大量 Index ; 2.弱資料正確性  
+  所以 MongoDB 變成有點類似 Dynamic schema，  
+  Elasticsearch 則是有 Dynamic mapping，  
+  到若要在本質上攻克 Schema-less 有另一個東西，Wide Column Stores - `Cassandra`
+
+* :notebook: <font color="008000">**關於 NoSQL 知識補充**</font>
   
   Elasticsearch 屬於文件型資料庫，  
   Google `NoSQL` 拉到文件儲存列表就會看到了，  
@@ -214,10 +241,28 @@ Index (索引)為 Elasticsearch 的核心概念之一，
   * 圖資料庫
   * 列資料庫
 
-
 ### Mapping
 
+> Mapping is the process of defining how a document, and the fields it contains, are stored and indexed.
+
+* :notebook: <font color="008000">**Mapping Types 知識補充**</font>
+
+> Elasticsearch 8.0.0 no longer supports mapping types.  
+> For details on how to migrate your clusters away from mapping types,  
+> see the removal of types documentation for the 7.x release.  
+
+隨著 types 的棄用，Elasticsearch 8.0.0 已經不提供 Mapping Types 機制，
+稍微注意一下就好
+
+### Dynamic mapping
+
+### Explicit mapping
+
 ### Field
+
+### Metadata fields
+
+### Field data types
 
 ## Search
 

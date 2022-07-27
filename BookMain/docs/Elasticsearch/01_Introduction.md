@@ -83,7 +83,7 @@
     * 查全率 Recall rate
     * 查準率 Precision
 
-* **<font color="#63C5DA" size="4">HTTP Web介面和無模式JSON文件</font>**
+* **<font color="#63C5DA" size="4">HTTP Web介面和無模式(Schema-less)JSON文件</font>**
   
     Elasticsearch 以 HTTP 協議，提供了"純正" `REST APIs`，透過操作 `REST API` 得以讓使用者操作 Elasticsearch 中的相關功能，  
     在 Elasticsearch 中 Server 與 Client 交換資訊大多以 `JSON` 格式為主，  
