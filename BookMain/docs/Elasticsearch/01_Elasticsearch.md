@@ -72,7 +72,7 @@ ELasticsearch 核心要素有三個:
 
 用最簡單的方式，建立"儲存資料的容器"到"將資料儲存到實體位置"的實用角度上來切入 :
 
-* RDBMS
+* <font color="#63C5DA">**RDBMS**</font>
 
   * 建資料庫
   * 建資料表
@@ -81,7 +81,7 @@ ELasticsearch 核心要素有三個:
 
   ![RDBMSflow](../.vuepress/public/chapter2/elasticsearch/RDBMSflow.png)
 
-* Elasticsearch
+* <font color="#63C5DA">**Elasticsearch**</font>
 
   * 建立索引 (Index)
   * 設計映射 (Mapping)，此步驟也不一定要有
@@ -300,16 +300,67 @@ Explicit mapping 可準確定義欄位型態，當我們已經知道 Document �
 
 ### Field
 
+沒甚麼特別的就是一個 Field，注意一下這個 Field 是不是要跑全文索引即可，例如:  
+被設定成 `text` 類型的 Field 會進行全文檢索分析，  
+被設定成 `keyword` 類型的僅提供查詢篩選或其他聚合操作......等等
+
+另外需要知道一個 `Multi-fields` 機制，
+用來對同一個 field 賦予不同的屬性
+> Multi-fields,It is often useful to index the same field in different ways for different purposes.  
+
 ### Metadata fields
+
+> Each document has metadata associated with it, such as the _index and _id metadata fields.
+
+每個 document 通常有著自己的 Metadata，常見的有 `_index` 文件所在索引; `_id` 文件唯一Id
 
 ### Field data types
 
+> Each field has a field data type, or field type.  
+
+每個 Field 都有自己的 Field data types [詳見](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html)  
+(預計會寫在 Mapping 那個章節)  
+
 ## Search
+
+> The Elasticsearch REST APIs support structured queries, full text queries, and complex queries that combine the two.  
+運用 Elasticsearch 來進行搜尋只有幾個重點:
+
+* <font color="#63C5DA">**結構化查詢 + 全文檢索查詢**</font>
+* <font color="#63C5DA">**REST APIs**</font>
+* <font color="#63C5DA">**Query DSL (Domain Specific Language)**</font>
+* <font color="#63C5DA">**~~其實還有 SQL-style queries~~**</font>
+
+其他請見搜尋類的筆記...
 
 ## Analyzer
 
+> Elasticsearch aggregations enable you to build complex summaries of your data and gain insight into key metrics, patterns, and trends.
+
+恩... 就是 Elasticsearch 也有提供`聚合查詢`..OK吧.. (´．ω．`)  
+
+喔... 還有`machine learning`，哪次不 machine learning 對吧 (´-ω-｀)
+
 ## Distributed Document Store
+
+**Elasticsearch 是一個<font color="#FF0000">分布式</font>的<font color="#FF0000">文件資料庫</font>**  
+Elasticsearch 是一個具有分布式架構特徵的應用，所以會有集群這個概念，  
+整個 Elasticsearch 的真面目其實比較像這個樣子，如下圖:  
+![EsCluster]()
+
+### Cluster
+
+### Node
 
 ### Shard
 
 ### Replica
+
+## Conclusion
+
+理解一門技術，一些名詞還是必要之惡，  
+一邊理解名詞一邊補原理吧 ~~(才能唬人)~~，  
+概念性的知識太多頭實在很痛，  
+有漏掉的東西之後真的有使用到或想到再回來補吧  
+
+![好耶](../.vuepress/public/chapter2/elasticsearch/haoya.jpg)
