@@ -245,6 +245,18 @@ Index (索引)為 Elasticsearch 的核心概念之一，
 
 > Mapping is the process of defining how a document, and the fields it contains, are stored and indexed.
 
+在 Elasticsearch 中每個 Document 內包含多個 fields，而且這些 fields 會有屬於自己的 data type，  
+當資料以 Document 進入 Elasticsearch 中時，會自動的 Mapping 每個 fields 的 data type，  
+此時有兩種情況，  
+當這個欄位有事先被定義時，會根據已定義的規則 Mapping，  
+而沒有定義的欄位則會由 Dynamic Mapping 判斷此欄位的資料型態  
+&nbsp;  
+在實務使用上最好事先定義好 Mapping，    
+因為<font color="#FF0000" size=4>一個 Index 的 Mapping 一旦建立便不能修改</font>，  
+Elasticsearch 中存在一種 Aliases 的機制，可讓使用者較為方便維護 Index 之更迭，  
+但還是要經過 Reindex 的動作才能完成更新，  
+以下粗略介紹一下兩種 Mapping
+
 * :notebook: <font color="008000">**Mapping Types 知識補充**</font>
 
 > Elasticsearch 8.0.0 no longer supports mapping types.  
@@ -256,7 +268,35 @@ Index (索引)為 Elasticsearch 的核心概念之一，
 
 ### Dynamic mapping
 
+> When Elasticsearch detects a new field in a document,  
+> it dynamically adds the field to the type mapping by default.
+
+官方文件指名當有一個新得 field 在文件中時，Elasticsearch 將會自動得進行 type mapping，
+意即 Elasticsearch 幫我們判斷 JSON 中欄位的資料型態，這個機制稱為 `Dynamic field mapping`
+
+> Dynamic templates allow you greater control of how Elasticsearch maps your data beyond the default dynamic field mapping rules.
+
+此外 Elasticsearch 也提供 `Dynamic templates` 可以讓使用者詳細自訂自己需要的映射規則 `dynamic field mapping rules` (中文實在不好講)
+
 ### Explicit mapping
+
+Explicit mapping 可準確定義欄位型態，當我們已經知道 Document 數據是什麼，  
+可以如同定義資料表型態一樣，  
+來定義文件中的欄位型態其中包括(原文比較貼切...):  
+
+* <font color="#63C5DA">Which string fields should be treated as full text fields.</font>  
+  那些 string fields 要使用 full text fields
+* <font color="#63C5DA">Which fields contain numbers, dates, or geolocations.</font>  
+  那些 fields 是數字、日期、地理資訊
+* <font color="#63C5DA">The format of date values.</font>  
+  日期格式  
+* <font color="#63C5DA">Custom rules to control the mapping for dynamically added fields.</font>  
+  這個 fields 可以使用的 Dynamic field mapping 方式  
+
+>Use runtime fields to make schema changes without reindexing.  
+
+另外使用 `runtime fields` 可以在不用 reindexing 的情況下進行型態的更新，  
+但其副作用就是搜索效率的降低，請自己衡量再三
 
 ### Field
 
