@@ -32,10 +32,10 @@ Elasticsearch 中的資料搜尋的請求模式，基本上可以分成兩種模
 * 使用 Bulk 倒入資料
   
   直接複製官方的文件貼上即可，基本上就是用 bulk 去 indexed  
-  ![bulk測資](../.vuepress/public/chapter2/searchapi/bulkdata.png)
+  ![bulk測資](../.vuepress/public/es/searchapi/bulkdata.png)
 
   倒入資料後的結果，這邊 error 這個欄位會顯示 false，即為倒入過程沒有發生錯誤，在實際的應用場景中，判斷 error 這個欄位是 true 的話，才會去尋訪回傳的陣列是哪一筆資料出錯  
-  ![bulk測資](../.vuepress/public/chapter2/searchapi/bulkdataresult.png)
+  ![bulk測資](../.vuepress/public/es/searchapi/bulkdataresult.png)
 
   cat 索引文件數量查文件
 
@@ -86,7 +86,7 @@ GET <index>/_search?<parameter>
 GET accounts/_search?_source=firstname,lastname
 ```
 
-![searchsource](../.vuepress/public/chapter2/searchapi/searchsource.png)
+![searchsource](../.vuepress/public/es/searchapi/searchsource.png)
 
 ### 查條件
 

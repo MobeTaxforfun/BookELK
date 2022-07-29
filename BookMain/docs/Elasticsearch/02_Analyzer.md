@@ -378,7 +378,7 @@ GET /book-multi-fields/_search
 }
 ```
 
-![multifield比較](../.vuepress/public/chapter2/analyzer/mutilfieldscompare.png)  
+![multifield比較](../.vuepress/public/es/analyzer/mutilfieldscompare.png)  
 結果為第一個命中，第二個未命中，第三個命中，這是因為條件為 `title` 時分析器為 `simple` 會保留 `the`，條件為 `title.english` 時，分析器 english 會將 `the` 作為 stop words 過濾掉。
 
 ## 客製化 Analyzer

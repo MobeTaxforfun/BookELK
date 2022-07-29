@@ -21,7 +21,7 @@
 
 以下是來至 Wiki 的說明:  
 &nbsp;  
-![Es wiki](../.vuepress/public/chapter2/Intro/eswiki.png)
+![Es wiki](../.vuepress/public/es/Intro/eswiki.png)
 &nbsp;  
 小結幾個重點:
 
@@ -129,13 +129,13 @@
    通常 NoSQL 都是用來解決 SQL 解決不了的問題，  
    Elasticsearch 它的優勢就不用特別在強調了看名字就知道了 Elastic**search** 強項是 **搜尋**
 
-  ![dbr](../.vuepress/public/chapter2/Intro/dbrank.png)  
+  ![dbr](../.vuepress/public/es/Intro/dbrank.png)  
 
   這是 DB-Engines Ranking of Search Engines 搜尋引擎的排行榜  
   基本上 Elasticsearch 已經好幾年沒下來過了，而且有好一陣子熱度都是兩倍輾壓第二名  
   除非有更好的解決方案，或有人用GO寫一個差不多的東西才有可能下來..大概!?  
 
-  ![dbr engine](../.vuepress/public/chapter2/Intro/dbranksearch.png)
+  ![dbr engine](../.vuepress/public/es/Intro/dbranksearch.png)
 
 ## Conclusion
   

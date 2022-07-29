@@ -43,7 +43,7 @@
 GET _cat/aliases?v
 ```
 
-![列出所有別名](../.vuepress/public/chapter2/Aliases/listedaliases.png)
+![列出所有別名](../.vuepress/public/es/Aliases/listedaliases.png)
 
 ## 新增、更新 Index Alias
 
@@ -72,7 +72,7 @@ GET _cat/aliases?v
     GET mybookstore/_search
     ```
 
-    ![使用alias來查詢](../.vuepress/public/chapter2/Aliases/listindexbyalias.png)
+    ![使用alias來查詢](../.vuepress/public/es/Aliases/listindexbyalias.png)
 
 ## 查詢 alias
 
@@ -85,7 +85,7 @@ GET _cat/aliases?v
   GET bookstore/_alias/mybookstore
   ```
 
-  ![取得alias](../.vuepress/public/chapter2/Aliases/getalias.png)
+  ![取得alias](../.vuepress/public/es/Aliases/getalias.png)
 
 ## 刪除 alias
 
@@ -173,4 +173,4 @@ GET /mybookstore/_search
 * 刪除原來的 index_v1
 * 完成 index 的更新
 
-![使用aliasReindex](../.vuepress/public/chapter2/Aliases/aliasreindex.png)
+![使用aliasReindex](../.vuepress/public/es/Aliases/aliasreindex.png)

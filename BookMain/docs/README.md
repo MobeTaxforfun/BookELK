@@ -39,23 +39,6 @@ Thank you!
 * 環境
   - [X] 初階 Elasticsearch With Docker
   - [X] 初階 Elasticsearch With DockerCompose
-* DEMO
-  - ~~[ ] 拿故宮 OpenAPI 做尋引擎~~(棄案 API權限請不下來 ==..)
-    - [ ] ~~申請故宮 Open data~~
-    - [ ] ~~抓取資料~~
-    - [ ] ~~將資料入庫~~
-    - [ ] ~~使用 Elasticsearch 進行持久化~~
-    - [ ] ~~特定欄位實踐全文搜索~~
-  - [ ] 以 Elasticsearch 為基礎的 Discord bot 語意機器人
-    - [ ] ~~Dcard 爬蟲~~( 先暫緩爬到IP被擋.. 懶得跳 Proxy..)
-    - [X] PTT八卦版訓練資料匯入
-    - [X] discord bot
-    - [X] 集成 .net core 開發對答服務
-  - [ ] 比較 2000 萬筆資料下 SQL 與 Elasticsearch 的搜尋速度
-    - [X]  SQL 資料建置
-      - [ ] 產生假資料
-    - [ ]  Elasticsearch 資料建置
-    - [ ]  設計比較實驗
 * Elasticsearch
   - [X] Mapping
   - [X] Index Aliases
@@ -69,7 +52,6 @@ Thank you!
     - [ ] Term Query
 * Kibana
   - [ ] Simple Data Dashboards
-    - [X] 資料匯入
 * Logstash
   - [X] Load CSV File into Elasticsearch
 * Beat

@@ -23,7 +23,7 @@ PUT /my-user-000001
 }
 ```
 
-![創建索引並附加屬性](../.vuepress/public/chapter2/mapping/putindexmappingsproperties.png)
+![創建索引並附加屬性](../.vuepress/public/es/mapping/putindexmappingsproperties.png)
 
 * age 為 integer : 毫無反應；就是一個整數
 * email 為 keyword : 若指定為 keyworld，將不會享有全文搜索的特性，單單視為普通參數做使用
@@ -47,7 +47,7 @@ PUT /my-user-000001/_mapping
 }
 ```
 
-![添加新字段到已經存在的Index中](../.vuepress/public/chapter2/mapping/addnewfield.png)
+![添加新字段到已經存在的Index中](../.vuepress/public/es/mapping/addnewfield.png)
 
 ## 更新字段
 
@@ -62,7 +62,7 @@ PUT /my-user-000001/_mapping
 GET /my-user-000001/_mapping
 ```
 
-![查詢映射](../.vuepress/public/chapter2/mapping/searchmappingofindex.png)
+![查詢映射](../.vuepress/public/es/mapping/searchmappingofindex.png)
 
 ## 查詢某個指定的 field
 
@@ -70,4 +70,4 @@ GET /my-user-000001/_mapping
 GET /my-user-000001/_mapping/field/employee-id
 ```
 
-![查詢指定字段](../.vuepress/public/chapter2/mapping/searchspecificfield.png)
+![查詢指定字段](../.vuepress/public/es/mapping/searchspecificfield.png)

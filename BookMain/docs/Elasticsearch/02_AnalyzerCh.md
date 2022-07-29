@@ -24,10 +24,10 @@
 
 * 將下載的 elasticsearch-analysis-ik-7.17.1 解壓縮後加到 plugins 這個資料夾下
 * 這邊我的 Elasticsearch 使用 Docker 搭建，再啟動 Container 的時候已經將 plugins 掛載到本機下面了  
-  ![Plugin掛載](../.vuepress/public/chapter2/analyzerCh/dockerpluginsvolumes.png)
+  ![Plugin掛載](../.vuepress/public/es/analyzerCh/dockerpluginsvolumes.png)
 
 * 找到掛載的路徑直接貼上  
-  ![Plugin掛載本機](../.vuepress/public/chapter2/analyzerCh/dockerpluginshostpath.png)
+  ![Plugin掛載本機](../.vuepress/public/es/analyzerCh/dockerpluginshostpath.png)
 
 * 進到容器中察看，如果有成功對應會出現 `elasticsearch-analysis-ik` 這個資料夾
 
@@ -59,7 +59,7 @@
   }
   ```
 
-  ![預設分詞結果](../.vuepress/public/chapter2/analyzerCh/standardanalyzerresult.png)
+  ![預設分詞結果](../.vuepress/public/es/analyzerCh/standardanalyzerresult.png)
 
   輸出:
 
@@ -79,7 +79,7 @@
   }
   ```
 
-  ![ik分詞結果](../.vuepress/public/chapter2/analyzerCh/ikanalyzerresult.png)
+  ![ik分詞結果](../.vuepress/public/es/analyzerCh/ikanalyzerresult.png)
 
   輸出:
 
@@ -94,17 +94,17 @@
 * 一樣到上方的 [ik繁體] 連結中把整個 Repository 拉下來
 
 * 拉下來打開資料夾長這樣，這邊關注紅色框的兩個檔案  
-  ![ik繁體安裝](../.vuepress/public/chapter2/analyzerCh/ikanalyzerzhtw.png)
+  ![ik繁體安裝](../.vuepress/public/es/analyzerCh/ikanalyzerzhtw.png)
 
 * `IKAnalyzer.cfg.xml` 為 `IK Analyzer 扩展配置`，在設定中會把字典指向 custom 資料夾擴展的繁體分詞字典就放在 `custom` 裡面
 
 * 設置 IK 繁體擴展，在這個路徑下面 `/usr/share/elasticsearch/plugins/elasticsearch-analysis-ik/config`，會看到 `IKAnalyzer.cfg.xml` 這個 XML 檔，我們要做的就是把剛剛下載的檔案複製過來  
 
-  ![IK繁體擴展路徑](../.vuepress/public/chapter2/analyzerCh/ikconfigpath.png)
+  ![IK繁體擴展路徑](../.vuepress/public/es/analyzerCh/ikconfigpath.png)
 
 * 加入擴展檔案，plugins裡面的IK分詞會如下圖  
   
-  ![IK繁體擴展實體路徑](../.vuepress/public/chapter2/analyzerCh/ikconfighostpath.png)
+  ![IK繁體擴展實體路徑](../.vuepress/public/es/analyzerCh/ikconfighostpath.png)
 
 ## 測試 IK繁體 分詞
 
@@ -118,7 +118,7 @@
   }
   ```
 
-    ![ik分詞結果](../.vuepress/public/chapter2/analyzerCh/ikanalyzertwzhresult.png)
+    ![ik分詞結果](../.vuepress/public/es/analyzerCh/ikanalyzertwzhresult.png)
 
   輸出:
 
@@ -146,7 +146,7 @@
   }
   ```
 
-  ![ik_smart結果](../.vuepress/public/chapter2/analyzerCh/ik_smartanalyzerresult.png)
+  ![ik_smart結果](../.vuepress/public/es/analyzerCh/ik_smartanalyzerresult.png)
 
   輸出:
 

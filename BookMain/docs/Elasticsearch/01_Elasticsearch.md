@@ -79,7 +79,7 @@ ELasticsearch 核心要素有三個:
   * 設計欄位
   * 插入資料  
 
-  ![RDBMSflow](../.vuepress/public/chapter2/elasticsearch/RDBMSflow.png)
+  ![RDBMSflow](../.vuepress/public/es/elasticsearch/RDBMSflow.png)
 
 * <font color="#63C5DA">**Elasticsearch**</font>
 
@@ -87,7 +87,7 @@ ELasticsearch 核心要素有三個:
   * 設計映射 (Mapping)，此步驟也不一定要有
   * 插入文件 (Document)
 
-  ![ESflow](../.vuepress/public/chapter2/elasticsearch/ESflow.png)
+  ![ESflow](../.vuepress/public/es/elasticsearch/ESflow.png)
 
 最後來看一下官方部落格上面的論述(2013年，所有還有Type的概念)
 
@@ -143,7 +143,7 @@ Index (索引)為 Elasticsearch 的核心概念之一，
 關於反向索引或稱倒排索引已經是老生常談了(Google一下就一堆)，  
 簡單的記錄一下  
 
-![invertedindexexample](../.vuepress/public/chapter2/elasticsearch/InvertedIndexExample.png)
+![invertedindexexample](../.vuepress/public/es/elasticsearch/InvertedIndexExample.png)
 
 * <font color="#63C5DA" size="4">**簡略的轉置流程**</font>  
 
@@ -152,7 +152,7 @@ Index (索引)為 Elasticsearch 的核心概念之一，
  ※所以當我們搜尋 `what` 的時候，我們可以知道 `what` 這個關鍵字在文件ID為 `0,1` 這兩個文件中，便不用在每個文件尋訪，  
  以 Wiki 的三句文字為例子，流程如下圖:  
  &nbsp;  
- ![invertedindexflow](../.vuepress/public/chapter2/elasticsearch/Invertedindexflow.png)  
+ ![invertedindexflow](../.vuepress/public/es/elasticsearch/Invertedindexflow.png)  
  &nbsp;  
 
  若以 Forward Index (索引) vs. Invert Index (反向索引) 來切入，  
@@ -160,7 +160,7 @@ Index (索引)為 Elasticsearch 的核心概念之一，
  事實上正因為 Invert Index 的特性，Invert Index 也是文件檢索系統中最常用的資料結構，  
  Forward Index vs. Invert Index 兩者比較如下圖:  
  &nbsp;  
- ![forwardvsinvertedindex](../.vuepress/public/chapter2/elasticsearch/forwardvsinvertedindex.png)  
+ ![forwardvsinvertedindex](../.vuepress/public/es/elasticsearch/forwardvsinvertedindex.png)  
  &nbsp;  
 
 ### Inverted Index For Elasticsearch
@@ -183,7 +183,7 @@ Index (索引)為 Elasticsearch 的核心概念之一，
   最 <font color="FF4500">**簡單**</font> 來說就是一個 Index 裡面，會有很多同屬性的 Documents  
   (當然實際場景下遠比這個複雜得多，還有 Node; Shard; 那些有的沒的)  
   &nbsp;  
-  ![IndexandDocument](../.vuepress/public/chapter2/elasticsearch/IndexandDocument.png)  
+  ![IndexandDocument](../.vuepress/public/es/elasticsearch/IndexandDocument.png)  
 
 * <font color="#63C5DA" size="4">**數據最小單位**</font>
 
@@ -346,11 +346,39 @@ Explicit mapping 可準確定義欄位型態，當我們已經知道 Document �
 **Elasticsearch 是一個<font color="#FF0000">分布式</font>的<font color="#FF0000">文件資料庫</font>**  
 Elasticsearch 是一個具有分布式架構特徵的應用，所以會有集群這個概念，  
 整個 Elasticsearch 的真面目其實比較像這個樣子，如下圖:  
-![EsCluster]()
+
+![EsCluster](../.vuepress/public/es/elasticsearch/esarchitecture.png)
 
 ### Cluster
 
+Elasticsearch Cluster 一個Elasticsearch的集群中可以包含一個或多個 Node，  
+通常使用上我們可以根據需求對集群中的節點進行編排，  
+藉由集群的特性實現<font color="#FF0000" size=4>**水平擴充**</font>，  
+同時可以藉由集群來提供<font color="#FF0000" size=4>**高可用**</font>的服務環境 ( High availability services )，
+
+* :notebook: <font color="008000">**High availability 知識補充**</font>
+
+  在分布式系統設計中"高可用"是一定會被討論到的問題，  
+  常見的解決方案都有針對高可用的描述 Ex: Redis,Kafka，  
+  可以參考比較其中的作法，並應用在系統設計上  
+
 ### Node
+
+由架構圖可以見得，一個 Elasticsearch Cluster 中會包含數個 Node，  
+每個 Node 皆可以視為一個獨立的 Elasticsearch 應用，  
+每個 Node 都應該在一個"獨立"的環境上運行 (ex: container or VM)
+在測試環境上可以將 Node 建置在同一主機上面，  
+若是實際應用的生產環境，還是建議將不同的節點獨立到不同的主機上，以保證高可用的特性  
+
+在 Elasticsearch Cluster 每個 Node 可以藉由 `Node Roles` 賦予集群中的節點不同任務，常見的總類有:  
+
+* <font color="#63C5DA">**Data Nodes**</font>
+* <font color="#63C5DA">**Master Nodes**</font>
+* <font color="#63C5DA">**Ingest Nodes**</font>
+* <font color="#63C5DA">**Machine Learning Nodes**</font>
+* <font color="#63C5DA">**Coordinator Nodes**</font>
+
+詳細會在分布式的筆記中記錄
 
 ### Shard
 
@@ -363,4 +391,4 @@ Elasticsearch 是一個具有分布式架構特徵的應用，所以會有集群
 概念性的知識太多頭實在很痛，  
 有漏掉的東西之後真的有使用到或想到再回來補吧  
 
-![好耶](../.vuepress/public/chapter2/elasticsearch/haoya.jpg)
+![好耶](../.vuepress/public/es/elasticsearch/haoya.jpg)

@@ -13,7 +13,7 @@
 每個索引都可有自己的 `mapping`，mapping 會決定 `Document` 中每個 `fields` 的名稱與類型；  
 在 ES 中 `index` 也可以分布在不同的 `Shard` 上，來達到儲存空間的水平擴展，以系統架構的角度可以這樣看:  
 &nbsp;  
-![Index Architecture](../.vuepress/public/chapter2/Index/indexArchitechture.png)
+![Index Architecture](../.vuepress/public/es/Index/indexArchitechture.png)
 
 ## Create index API
 
