@@ -382,12 +382,58 @@ Elasticsearch Cluster 一個Elasticsearch的集群中可以包含一個或多個
 
 ### Shard
 
+Shard 又或是"分片"，在 Elasticsearch 中一個 Index 會被切分成多個 Shard 保存在不同的地方，  
+可以想像成一個資料庫放不下了，所以分庫儲存，  
+Shard 的機制幫助 Elasticsearch 實現了 <font color="#FF0000">**資料的高可用**</font> 與 <font color="#FF0000">**可擴展性**</font>，  
+> There are two types of shards: primaries and replicas.  
+
+在 Elasticsearch 中存在著兩種 Shard，如下:  
+
+* <font color="#63C5DA">**Primary Shard**</font>
+
+> Each document in an index belongs to one primary shard.  
+
+  用來儲存資料，即儲存 document
+
+* <font color="#63C5DA">**Replica Shard**</font>
+
+> A replica shard is a copy of a primary shard.  
+
+  用來備份資料
+
+假若今天僅僅只是簡單的應用 Elasticsearch Shard 機制可以這樣理解:  
+
+以物理層面來說就是資料量預期會很大，所以切開來放到不同的地方，  
+如果以實際 Elasticsearch 實踐的架構來說是，  
+每個 Shard 都是 Index 的一部分，而每個 Shard 又是一個  `lucene index` ，  
+每個 `lucene index` 又管理一群 `Segment`，用圖解可能比較清楚  
+
+* 這是用途切分資料  
+
+  ![esshardpysical](../.vuepress/public/es//elasticsearch/esshardphysical.png)
+
+* 這是實際架構  
+
+  ![esshardarchitecture](../.vuepress/public/es//elasticsearch/esshardarchitecture.png)
+
+在
+
+* :notebook: <font color="008000">**Segment 知識補充**</font>
+
+  Elasticsearch 是一個基於 Lucene 實作的應用，  
+  在 Lucene 中最小的儲存單位即是 Segment，一個 Segment當中包含:  
+
+  * Inverted Index
+  * Sorted Fields
+  * Document Values
+  * Cache
+
 ### Replica
 
 ## Conclusion
 
 理解一門技術，一些名詞還是必要之惡，  
-一邊理解名詞一邊補原理吧 ~~(才能唬人)~~，  
+一邊理解名詞一邊補原理 ~~(才能唬人)~~，  
 概念性的知識太多頭實在很痛，  
 有漏掉的東西之後真的有使用到或想到再回來補吧  
 
