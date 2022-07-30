@@ -432,7 +432,10 @@ Shard 的機制幫助 Elasticsearch 實現了 <font color="#FF0000">**資料的�
 需要特別注意的點；  
 <font color="#FF0000">只有在一開始建立 Index 時才可以指定 Primary Shard 的數量</font>，  
 Replica Shards 則是在任何時候都可以變更，  
-但如果非得要變更 Primary Shard 就需要 ReIndex 了  
+但如果非得要變更 Primary Shard 就需要 ReIndex 了，  
+在 Elasticsearch 官方網站中，也有很多探討關於 Shard 策略的文章，都可以參考看看 
+
+[size-your-shards](https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html)
 
 * :notebook: <font color="008000">**Segment 知識補充**</font>
 
@@ -443,8 +446,6 @@ Replica Shards 則是在任何時候都可以變更，
   * Sorted Fields
   * Document Values
   * Cache
-
-### Replica
 
 ## Conclusion
 
