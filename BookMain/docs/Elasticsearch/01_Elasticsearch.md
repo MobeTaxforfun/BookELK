@@ -396,27 +396,43 @@ Shard 的機制幫助 Elasticsearch 實現了 <font color="#FF0000">**資料的�
   用來儲存資料，即儲存 document
 
 * <font color="#63C5DA">**Replica Shard**</font>
-
 > A replica shard is a copy of a primary shard.  
 
-  用來備份資料
+  用來作為 Primary Shard 資料的副本，同時有兩個主要功能，作為高可用的硬體容錯並且增加查詢時的效能
 
-假若今天僅僅只是簡單的應用 Elasticsearch Shard 機制可以這樣理解:  
+假若今天僅僅只是簡單的應用 Elasticsearch Shard 機制可以這樣理解，  
+每個 Shard 都有一個自己的 Replica (每個分片都有自己的副本)，  
+同時； Shard 與自己成對的 Replica 不會在同一個 Node 上面，  
+並且；當這些 Shard 集合在一起時就是一個完整的 Index  
+
+ ![esReplica](../.vuepress/public/es/elasticsearch/IndexReplica.png)
 
 以物理層面來說就是資料量預期會很大，所以切開來放到不同的地方，  
 如果以實際 Elasticsearch 實踐的架構來說是，  
 每個 Shard 都是 Index 的一部分，而每個 Shard 又是一個  `lucene index` ，  
 每個 `lucene index` 又管理一群 `Segment`，用圖解可能比較清楚  
 
-* 這是用途切分資料  
+* <font color="#63C5DA">**這是資料切片**</font>
 
-  ![esshardpysical](../.vuepress/public/es//elasticsearch/esshardphysical.png)
+  ![esshardpysical](../.vuepress/public/es/elasticsearch/esshardphysical.png)
 
-* 這是實際架構  
+* <font color="#63C5DA">**這是實際架構**</font>  
 
   ![esshardarchitecture](../.vuepress/public/es//elasticsearch/esshardarchitecture.png)
 
-在
+在 Elasticsearch 中，正確的使用 Shard 將會帶來的好處
+
+* <font color="#63C5DA">**更大的儲存空間，資料分散到不同的 Node**</font>
+* <font color="#63C5DA">**更有效率的搜尋效能，當一個 Query 進來時也分散到不同的 Node 上**</font>
+
+> The number of primary shards in an index is fixed at the time that an index is created,  
+> but the number of replica shards can be changed at any time,  
+> without interrupting indexing or query operations.
+
+需要特別注意的點；  
+<font color="#FF0000">只有在一開始建立 Index 時才可以指定 Primary Shard 的數量</font>，  
+Replica Shards 則是在任何時候都可以變更，  
+但如果非得要變更 Primary Shard 就需要 ReIndex 了  
 
 * :notebook: <font color="008000">**Segment 知識補充**</font>
 
