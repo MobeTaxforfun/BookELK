@@ -1,14 +1,19 @@
 # Elasticsearch Index
 
-:closed_book: Chapter Objectives
+:green_book: **Chapter Objectives**
 
 * 索引的基本
 * 基本API的使用
 
-:blue_book: Reference
+:blue_book: **Reference**
 
-* [官方文件](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/indices.html)
+* [官方文件](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html)
+* [Terminology](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html#i-glos)
 * [What is an Elasticsearch Index?(2013)](https://www.elastic.co/blog/what-is-an-elasticsearch-index)
+
+:closed_book: **Notice**
+
+基本上能看官方文件就去看，沒有人會比官方更懂他們的產品
 
 ## Basic Definition
 
@@ -16,16 +21,44 @@
 > It has a mapping which defines multiple types.
 > An index is a logical namespace which maps to one or more primary shards and can have zero or more replica shards.
 
-* Collection of JSON documents.
-* To add one or more JSON documents to Elasticsearch. This process is called indexing.
+* <font color="63C5DA">**類似關聯式資料庫的 database**</font>
+* <font color="63C5DA">**必須透過 mapping 定義 types**</font>
+* <font color="63C5DA">**Index 是對一個"概念"的命名，Index 這個概念基本上包含一到多個 primary shards (分片)還有 零到多個 replica shards (副本)**</font>
 
-## Index
+官方公式書裡面提到對 `Index` 的定義:  
+
+* > Collection of JSON documents.
+* > To add one or more JSON documents to Elasticsearch. This process is called indexing.
+
+有兩件事都叫 `Index` ，在閱讀原文文件時可能要區分一下:
+
+* <font color="63C5DA">**一個是實體的 JSON documents 之集合**</font>
+* <font color="63C5DA">**一個是動作把 JSON documents 加入 Elasticsearch 這件事**</font>
 
 在 Elasticsearch 中 `Index` 為多個 Document 的集合，而 `Document` 又是多個 `fields` 的集合，  
 每個索引都可有自己的 `mapping`，mapping 會決定 `Document` 中每個 `fields` 的名稱與類型；  
 在 ES 中 `index` 也可以分布在不同的 `Shard` 上，來達到儲存空間的水平擴展，以系統架構的角度可以這樣看:  
 &nbsp;  
 ![Index Architecture](../.vuepress/public/es/Index/indexArchitechture.png)
+&nbsp;  
+
+官方 Index APIs 文件上將 Index 分成幾個小節:  
+
+* <font color="63C5DA" size="4">**Index management**</font>
+* <font color="63C5DA" size="4">**Mapping management**</font>
+* <font color="63C5DA" size="4">**Alias management**</font>
+* <font color="63C5DA" size="4">**Index settings**</font>
+* <font color="63C5DA" size="4">**Index templates**</font>
+* <font color="63C5DA" size="4">**Monitoring**</font>
+* <font color="63C5DA" size="4">**Status management**</font>
+* <font color="63C5DA" size="4">**Dangling indices**</font>
+
+依自身的經驗談，若要最快速上手 :
+
+`Index management`   : 必須先掌握，畢竟他是最基礎的 Index CURD  
+`Mapping management` : 若已經有一些應用要實作，需要掌握這個，才能指定一些 Mapping 相關的設計  
+`Alias management`   : 有很多的 Index 需要管理時，或者需要 ReIndex  
+* ~~其他等我真的用到再回來補 ﾚ(ﾟ∀ﾟ;)ﾍ=З=З=З~~
 
 ## Create index API
 

@@ -1,13 +1,17 @@
 # ELK Stack Intro
 
-:closed_book: **What is ELK Stack**
+:green_book: **What is ELK Stack**
 
 * ELK Stack = E(Elasticsearch) + L(Logstash) + K(Kibana) + Beats + Other
 * 本小節偏重於 Elasticsearch
 
-:blue_book: Reference
+:blue_book: **Reference**
 
 * [Elastic 官方傳送門](https://www.elastic.co/)
+
+:closed_book: **Notice**
+
+這邊只會放 Elasticsearch 相關的筆記
 
 ## What is ELK Stack
 

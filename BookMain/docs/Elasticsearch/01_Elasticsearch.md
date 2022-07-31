@@ -1,6 +1,6 @@
 # ELasticsearch
 
-:closed_book: **Chapter Objectives**  
+:green_book: **Chapter Objectives**  
 
 * ELasticsearch 更多基礎知識
 * 如同進行正規球賽前要先熟悉規則，使用 ELasticsearch 前基本相關名詞也需要略知一二
@@ -11,6 +11,10 @@
 
 * [官網](https://www.elastic.co/elasticsearch/)
 * [What is an Elasticsearch Index?(2013)](https://www.elastic.co/blog/what-is-an-elasticsearch-index)
+
+:closed_book:  **Notice**
+
+只是基於自身理解並且記錄下來，相關知識請皆已官方為最高準則
 
 ## More About ELasticsearch
 
