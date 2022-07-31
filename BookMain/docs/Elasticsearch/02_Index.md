@@ -60,6 +60,8 @@
 `Alias management`   : 有很多的 Index 需要管理時，或者需要 ReIndex  
 * ~~其他等我真的用到再回來補 ﾚ(ﾟ∀ﾟ;)ﾍ=З=З=З~~
 
+## Index API
+
 ## Create index API
 
 * 創建索引

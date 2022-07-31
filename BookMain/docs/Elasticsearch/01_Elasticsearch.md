@@ -16,6 +16,12 @@
 
 只是基於自身理解並且記錄下來，相關知識請皆已官方為最高準則
 
+:notebook_with_decorative_cover: **More**  
+
+假設不知道 Elasticsearch 主要解決甚麼問題可以看一下這個，  
+[IT狗的日常](https://www.facebook.com/itdogcom/posts/pfbid0CJU9qASg3yQ9QNQ65YY16qwAZ3mXKz3NNrkYhEQCghRzHaTj5v8APuFmCzsQSBDWl)   
+如果連結沒死的話...  
+
 ## More About ELasticsearch
 
 ELasticsearch 有著 Scalability(可擴展) 與 Near real-time search(接近即時搜尋) 的特性，  
