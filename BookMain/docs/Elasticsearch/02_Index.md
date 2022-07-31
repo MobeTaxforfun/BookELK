@@ -62,17 +62,32 @@
 
 ## Index API
 
+<font color="FF0000" size="5">**紀錄幾個主要 Index APIs**</font>
+
+|動作|API|
+|:-----|:----|
+|增|PUT /my-index-000001|
+|刪|DELETE /my-index-000001|
+|改|Index 一旦建立就不能修改了，<br/>只能通過遷移即 ReIndex，</br>通常搭配 Alias 來使用(Alias + ReIndex)|
+|查|GET /my-index-000001|
+
 ## Create index API
 
-* 創建索引
+新增索引
+>To delete all indices, use _all or * . To disallow the deletion of indices with _all or wildcard expressions,  
+>set the action.destructive_requires_name cluster setting to true.
 
-    Request: `PUT /<index>`
+支持通配符，可以使用 _all 或 * 刪除所有索引，可以在 Elasticsearch 設定中設定禁止此類型操作
 
-    ```sh
-    PUT /book-index-0001
-    ```
+* <font color="63C5DA">**Request**</font>  
+  `PUT /<index>`
+* <font color="63C5DA">**Example**</font>  
 
-    Result:
+  ```JSON
+  PUT /book-index-0001
+  ```
+
+* <font color="63C5DA">**Result**</font>
 
     ```JSON
     {
@@ -82,40 +97,7 @@
     }
     ```
 
-* 可以透過 Index body 設定的選項
-
-  * aliases 別名;傳送門
-  * mappings 映射;概念類似SQL中的Schema;傳送門
-  * settings 索引設置 replicas; shard;
-  
-  簡單的使用
-
-    ```sh
-    PUT /book-index-0002
-    {
-        "settings": {
-            "number_of_shards": 2,
-            "number_of_replicas": 2
-        },
-        "mappings": {
-            "properties": {
-                "title": { "type": "object" }
-            }
-        }
-    }
-    ```
-
-    Result:
-
-    ```JSON
-    {
-        "acknowledged" : true,
-        "shards_acknowledged" : true,
-        "index" : "book-index-0002"
-    }
-    ```
-
-* 索引命名原則
+* <font color="63C5DA">**索引命名原則**</font>
   * Lowercase only(只能小寫)
   * Cannot include \, /, *, ?, ", <, >, |, ` ` (space character), ,, #(不能包含這些字元)
   * Cannot start with -, _, +
@@ -124,37 +106,42 @@
 
 ## Delete index API
 
-* 刪除索引
+刪除索引
 
-    Request: `DELETE /<index>`
+* <font color="63C5DA">**Request**</font>  
+  `DELETE /<index>`
 
-    >To delete all indices, use _all or * . To disallow the deletion of indices with _all or wildcard expressions, set the action.destructive_requires_name cluster setting to true.
+* <font color="63C5DA">**Example**</font>  
+  
+  ```JSON
+  DELETE /book-index-0002
+  ```
 
-    可以使用 _all 或 * 刪除所有索引，可以在某個設定中設定禁止此類型操作
-
-    ```sh
-    DELETE /book-index-0002
-    ```
-
-    Result:
-
-    ```JSON
+* <font color="63C5DA">**Result**</font>  
+  
+  ```JSON
     {
         "acknowledged" : true
     }
-    ```
+  ```
 
 ## Get index API
 
-* 檢視某個索引
-  
-  Request: `GET /<target>`
+檢視索引
+>(Required, string) Comma-separated list of data streams, indices, and aliases used to limit the request.  
+> Supports wildcards (*).  
 
-    ```sh
-    GET /book-index-0001
-    ```
+支持通配符，可以使用 _all 或 * 查詢所有索引
 
-    Result:
+* <font color="63C5DA">**Request**</font>  
+  `GET /<target>`
+* <font color="63C5DA">**Example**</font>
+
+  ```JSON
+  GET /book-index-0001
+  ```
+
+* <font color="63C5DA">**Result**</font>
 
     ```JSON
     {
@@ -186,23 +173,40 @@
 
 ## Listed indices
 
-* 列出索引
-  
-  使用 cat API Request: `GET /_cat/indices`
-    ```sh
-        yellow open mybeat-2022.06.27               9SdlB48_RaKldQRgBQhKhg 1 1  7    0   243kb   243kb
-        green  open .geoip_databases                1cJrOdYzQruU1fc_A5o3Hw 1 0 40   77  75.9mb  75.9mb
-        yellow open mybeat-2022.06.28               fItzFNKkRSiLJzWEFSxMzg 1 1  2    0  69.4kb  69.4kb
-        green  open .apm-custom-link                UE04kRu1Q32E23P9o2aHWg 1 0  0    0    226b    226b
-        yellow open book-index-0001                 7DdAjOwdSlmXGuX7dKp_9g 1 1  0    0    226b    226b
-        green  open .apm-agent-configuration        5H2_N1KXQEyAczk8Szpq5w 1 0  0    0    226b    226b
-        yellow open movie-index-000001              Y29WUJ1JRZurwFxrCWETBA 1 1  0    0    226b    226b
-        green  open .kibana_task_manager_7.17.1_001 fG9VCeHmTS6i5zrUAPzj4A 1 0 17 5910 879.9kb 879.9kb
-        green  open .kibana_7.17.1_001              h3kEcPD0RhWmRKYdSlATOQ 1 0 37    3   4.7mb   4.7mb
-        yellow open mybeat-2022.06.26               mEBdUe-wRum4gI-VxhSsuA 1 1  4    0 138.6kb 138.6kb
-        green  open .tasks                          kh3_uU9iQJmofYrXL7DslQ 1 0 16    0  55.7kb  55.7kb
-    ```
+還有另一種方式也可以列出索引就是 `cat`，  
+區別是用 Get 取的索引資訊會詳細不少  
+
+使用 cat API Request: `GET /_cat/indices`
+
+```sh
+    yellow open mybeat-2022.06.27               9SdlB48_RaKldQRgBQhKhg 1 1  7    0   243kb   243kb
+    green  open .geoip_databases                1cJrOdYzQruU1fc_A5o3Hw 1 0 40   77  75.9mb  75.9mb
+    yellow open mybeat-2022.06.28               fItzFNKkRSiLJzWEFSxMzg 1 1  2    0  69.4kb  69.4kb
+    green  open .apm-custom-link                UE04kRu1Q32E23P9o2aHWg 1 0  0    0    226b    226b
+    yellow open book-index-0001                 7DdAjOwdSlmXGuX7dKp_9g 1 1  0    0    226b    226b
+    green  open .apm-agent-configuration        5H2_N1KXQEyAczk8Szpq5w 1 0  0    0    226b    226b
+    yellow open movie-index-000001              Y29WUJ1JRZurwFxrCWETBA 1 1  0    0    226b    226b
+    green  open .kibana_task_manager_7.17.1_001 fG9VCeHmTS6i5zrUAPzj4A 1 0 17 5910 879.9kb 879.9kb
+    green  open .kibana_7.17.1_001              h3kEcPD0RhWmRKYdSlATOQ 1 0 37    3   4.7mb   4.7mb
+    yellow open mybeat-2022.06.26               mEBdUe-wRum4gI-VxhSsuA 1 1  4    0 138.6kb 138.6kb
+    green  open .tasks                          kh3_uU9iQJmofYrXL7DslQ 1 0 16    0  55.7kb  55.7kb
+```
 
 ## Rename Index
 
-基本上滿麻煩的先使用 Clone Index API 再把原來的 Delete Index API
+在 Elasticsearch 索引建置下去就是建置下去了幾乎是不能後悔，  
+那有沒有提供一個彈性的作法呢?  
+有的，就是 ReIndex 的機制又稱數據遷移，  
+通常會搭配 Index aliases 來執行 ReIndex，  
+甚麼情況下會需要 ReIndex:  
+
+* 資料量真得太過龐大需要重新規劃分片
+* 需要修改 mapping 時
+
+~~預計會有一個章節筆記 Reindex 吧(或用到的時候)~~(大概至少在 aliases 會稍微提到)
+
+## Conclusion
+
+關於 Index 相關的東西實在還有很多，  
+一部分一部分來吧...  
+或有用到再補!?
