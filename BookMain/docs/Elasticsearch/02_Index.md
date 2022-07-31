@@ -1,11 +1,23 @@
 # Elasticsearch Index
 
-在 Elasticsearch 中一切皆以索引為主，索引的觀念務必要掌握確實，簡單過一下索引的API，看教學的時候才不會慌張
-> An index can be thought of as an optimized collection of documents and each document is a collection of fields, which are the key-value pairs that contain your data. By default, Elasticsearch indexes all data in every field and each indexed field has a dedicated, optimized data structure. For example, text fields are stored in inverted indices, and numeric and geo fields are stored in BKD trees. The ability to use the per-field data structures to assemble and return search results is what makes Elasticsearch so fast.
+:closed_book: Chapter Objectives
+
+* 索引的基本
+* 基本API的使用
 
 :blue_book: Reference
 
-* 官方文件；[走這裡](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/indices.html)
+* [官方文件](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/indices.html)
+* [What is an Elasticsearch Index?(2013)](https://www.elastic.co/blog/what-is-an-elasticsearch-index)
+
+## Basic Definition
+
+> An index is like a ‘database' in a relational database.  
+> It has a mapping which defines multiple types.
+> An index is a logical namespace which maps to one or more primary shards and can have zero or more replica shards.
+
+* Collection of JSON documents.
+* To add one or more JSON documents to Elasticsearch. This process is called indexing.
 
 ## Index
 
