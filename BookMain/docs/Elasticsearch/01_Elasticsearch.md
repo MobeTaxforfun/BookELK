@@ -19,7 +19,7 @@
 :notebook_with_decorative_cover: **More**  
 
 假設不知道 Elasticsearch 主要解決甚麼問題可以看一下這個，  
-[IT狗的日常](https://www.facebook.com/itdogcom/posts/pfbid0CJU9qASg3yQ9QNQ65YY16qwAZ3mXKz3NNrkYhEQCghRzHaTj5v8APuFmCzsQSBDWl)   
+[IT狗的日常](https://www.facebook.com/itdogcom/posts/pfbid0CJU9qASg3yQ9QNQ65YY16qwAZ3mXKz3NNrkYhEQCghRzHaTj5v8APuFmCzsQSBDWl)  
 如果連結沒死的話...  
 
 ## More About ELasticsearch
